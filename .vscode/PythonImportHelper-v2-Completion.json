@@ -1,0 +1,2711 @@
+[
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "MagicMock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "validate_email",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_email_required",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_password_strength",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_password_required",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_camera_url",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_camera_url_required",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_date_range",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_date_range_required",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_name",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_organization_name",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_camera_settings",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_alert_filters",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "ValidationError",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_camera_settings",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_alert_filters",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "ValidationError",
+        "importPath": "validators",
+        "description": "validators",
+        "isExtraImport": true,
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "cloudinary",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cloudinary",
+        "description": "cloudinary",
+        "detail": "cloudinary",
+        "documentation": {}
+    },
+    {
+        "label": "cloudinary.uploader",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cloudinary.uploader",
+        "description": "cloudinary.uploader",
+        "detail": "cloudinary.uploader",
+        "documentation": {}
+    },
+    {
+        "label": "cloudinary.api",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cloudinary.api",
+        "description": "cloudinary.api",
+        "detail": "cloudinary.api",
+        "documentation": {}
+    },
+    {
+        "label": "smtplib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "smtplib",
+        "description": "smtplib",
+        "detail": "smtplib",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "MIMEText",
+        "importPath": "email.mime.text",
+        "description": "email.mime.text",
+        "isExtraImport": true,
+        "detail": "email.mime.text",
+        "documentation": {}
+    },
+    {
+        "label": "MIMEMultipart",
+        "importPath": "email.mime.multipart",
+        "description": "email.mime.multipart",
+        "isExtraImport": true,
+        "detail": "email.mime.multipart",
+        "documentation": {}
+    },
+    {
+        "label": "yt_dlp",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yt_dlp",
+        "description": "yt_dlp",
+        "detail": "yt_dlp",
+        "documentation": {}
+    },
+    {
+        "label": "firebase_admin",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "credentials",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "firestore",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "credentials",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "firestore",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_from_directory",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "g",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "has_request_context",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "current_app",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "g",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "stream_with_context",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "CORS",
+        "importPath": "flask_cors",
+        "description": "flask_cors",
+        "isExtraImport": true,
+        "detail": "flask_cors",
+        "documentation": {}
+    },
+    {
+        "label": "CORS",
+        "importPath": "flask_cors",
+        "description": "flask_cors",
+        "isExtraImport": true,
+        "detail": "flask_cors",
+        "documentation": {}
+    },
+    {
+        "label": "YOLO",
+        "importPath": "ultralytics",
+        "description": "ultralytics",
+        "isExtraImport": true,
+        "detail": "ultralytics",
+        "documentation": {}
+    },
+    {
+        "label": "load_model",
+        "importPath": "tensorflow.keras.models",
+        "description": "tensorflow.keras.models",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras.models",
+        "documentation": {}
+    },
+    {
+        "label": "require_auth",
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "isExtraImport": true,
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "require_role",
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "isExtraImport": true,
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_user",
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "isExtraImport": true,
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "init_rate_limiter",
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "isExtraImport": true,
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "api_rate_limit",
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "isExtraImport": true,
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "detection_rate_limit",
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "isExtraImport": true,
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "exempt_from_rate_limit",
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "isExtraImport": true,
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "init_audit_logger",
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "isExtraImport": true,
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "AuditAction",
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "isExtraImport": true,
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "log_audit",
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "isExtraImport": true,
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "log_user_action",
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "isExtraImport": true,
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "log_error",
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "isExtraImport": true,
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "register_error_handlers",
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "isExtraImport": true,
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "handle_errors",
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "isExtraImport": true,
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "ValidationError",
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "isExtraImport": true,
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "error_response",
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "isExtraImport": true,
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "create_sse_response",
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "isExtraImport": true,
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "emit_alert",
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "isExtraImport": true,
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "emit_camera_status",
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "isExtraImport": true,
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "emit_system_health",
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "isExtraImport": true,
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "RotatingFileHandler",
+        "importPath": "logging.handlers",
+        "description": "logging.handlers",
+        "isExtraImport": true,
+        "detail": "logging.handlers",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "werkzeug.exceptions",
+        "description": "werkzeug.exceptions",
+        "isExtraImport": true,
+        "detail": "werkzeug.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "traceback",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "Limiter",
+        "importPath": "flask_limiter",
+        "description": "flask_limiter",
+        "isExtraImport": true,
+        "detail": "flask_limiter",
+        "documentation": {}
+    },
+    {
+        "label": "get_remote_address",
+        "importPath": "flask_limiter.util",
+        "description": "flask_limiter.util",
+        "isExtraImport": true,
+        "detail": "flask_limiter.util",
+        "documentation": {}
+    },
+    {
+        "label": "queue",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "queue",
+        "description": "queue",
+        "detail": "queue",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "mock_firebase_auth",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def mock_firebase_auth():\n    \"\"\"Mock Firebase authentication\"\"\"\n    with patch('firebase_auth.get_auth') as mock_auth:\n        mock_user = MagicMock()\n        mock_user.uid = 'test-uid'\n        mock_user.email = 'test@example.com'\n        mock_user.display_name = 'Test User'\n        mock_auth.return_value = MagicMock(\n            current_user=mock_user,\n            create_user=MagicMock(return_value=mock_user),",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "mock_firestore",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def mock_firestore():\n    \"\"\"Mock Firestore database\"\"\"\n    with patch('firebase_auth.get_firestore') as mock_db:\n        mock_collection = MagicMock()\n        mock_doc = MagicMock()\n        mock_doc.get = MagicMock(return_value=MagicMock(exists=True, data=lambda: {\n            'uid': 'test-uid',\n            'email': 'test@example.com',\n            'role': 'admin',\n            'org_id': 'org-1'",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def app():\n    \"\"\"Create Flask app for testing\"\"\"\n    from flask import Flask\n    from flask_cors import CORS\n    app = Flask(__name__)\n    app.config['TESTING'] = True\n    app.config['DEBUG'] = False\n    CORS(app)\n    # Register routes\n    from app import register_routes",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def client(app):\n    \"\"\"Create test client\"\"\"\n    return app.test_client()\n@pytest.fixture\ndef mock_valid_token():\n    \"\"\"Mock valid Firebase token\"\"\"\n    return 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.test.mock.token'\n@pytest.fixture\ndef auth_headers(mock_valid_token):\n    \"\"\"Headers with valid auth token\"\"\"",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "mock_valid_token",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def mock_valid_token():\n    \"\"\"Mock valid Firebase token\"\"\"\n    return 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.test.mock.token'\n@pytest.fixture\ndef auth_headers(mock_valid_token):\n    \"\"\"Headers with valid auth token\"\"\"\n    return {\n        'Authorization': f'Bearer {mock_valid_token}',\n        'Content-Type': 'application/json'\n    }",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "auth_headers",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def auth_headers(mock_valid_token):\n    \"\"\"Headers with valid auth token\"\"\"\n    return {\n        'Authorization': f'Bearer {mock_valid_token}',\n        'Content-Type': 'application/json'\n    }\n@pytest.fixture\ndef sample_camera_data():\n    \"\"\"Sample camera data for testing\"\"\"\n    return {",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_camera_data",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def sample_camera_data():\n    \"\"\"Sample camera data for testing\"\"\"\n    return {\n        'name': 'Test Camera',\n        'rtsp_url': 'rtsp://example.com/stream',\n        'location': 'Test Location',\n        'is_active': True,\n        'organization_id': 'org-1'\n    }\n@pytest.fixture",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_alert_filter_data",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def sample_alert_filter_data():\n    \"\"\"Sample alert filter data for testing\"\"\"\n    return {\n        'startDate': '2024-01-01T00:00:00Z',\n        'endDate': '2024-12-31T23:59:59Z',\n        'type': 'theft',\n        'status': 'new',\n        'limit': 50,\n        'offset': 0\n    }",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_user_data",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def sample_user_data():\n    \"\"\"Sample user data for testing\"\"\"\n    return {\n        'uid': 'test-uid',\n        'email': 'test@example.com',\n        'display_name': 'Test User',\n        'role': 'admin',\n        'org_id': 'org-1'\n    }\n@pytest.fixture(autouse=True)",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "reset_rate_limiter",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def reset_rate_limiter():\n    \"\"\"Reset rate limiter between tests\"\"\"\n    from rate_limit import limiter\n    if limiter:\n        limiter.reset()\n    yield\n    if limiter:\n        limiter.reset()\n@pytest.fixture\ndef mock_rate_limiter():",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "mock_rate_limiter",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def mock_rate_limiter():\n    \"\"\"Mock rate limiter\"\"\"\n    with patch('rate_limit.limiter') as mock:\n        mock.limit = MagicMock(return_value=lambda f: f)\n        mock.exempt = MagicMock(return_value=lambda f: f)\n        mock.check = MagicMock(return_value=True)\n        mock.reset = MagicMock()\n        yield mock\n# Pytest configuration\ndef pytest_configure(config):",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "pytest_configure",
+        "kind": 2,
+        "importPath": "tests.conftest",
+        "description": "tests.conftest",
+        "peekOfCode": "def pytest_configure(config):\n    \"\"\"Configure pytest\"\"\"\n    config.addinivalue_line(\n        \"markers\", \"slow: marks tests as slow (deselect with '-m \\\"not slow\\\"')\"\n    )\n    config.addinivalue_line(\n        \"markers\", \"integration: marks tests as integration tests\"\n    )\n    config.addinivalue_line(\n        \"markers\", \"unit: marks tests as unit tests\"",
+        "detail": "tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "TestFirebaseAuth",
+        "kind": 6,
+        "importPath": "tests.test_auth",
+        "description": "tests.test_auth",
+        "peekOfCode": "class TestFirebaseAuth:\n    \"\"\"Test Firebase authentication functions\"\"\"\n    @patch('firebase_auth.get_auth')\n    def test_require_auth_no_token(self, mock_get_auth):\n        \"\"\"Test require_auth without token returns error\"\"\"\n        from firebase_auth import require_auth\n        # Create mock app and request context\n        mock_app = MagicMock()\n        mock_request = MagicMock()\n        mock_request.headers = {}",
+        "detail": "tests.test_auth",
+        "documentation": {}
+    },
+    {
+        "label": "TestAuthDecorators",
+        "kind": 6,
+        "importPath": "tests.test_auth",
+        "description": "tests.test_auth",
+        "peekOfCode": "class TestAuthDecorators:\n    \"\"\"Test authentication decorators\"\"\"\n    def test_require_auth_decorator(self):\n        \"\"\"Test require_auth decorator structure\"\"\"\n        from firebase_auth import require_auth\n        # Verify decorator exists and is callable\n        assert callable(require_auth)\n    def test_require_role_decorator(self):\n        \"\"\"Test require_role decorator structure\"\"\"\n        from firebase_auth import require_role",
+        "detail": "tests.test_auth",
+        "documentation": {}
+    },
+    {
+        "label": "TestTokenVerification",
+        "kind": 6,
+        "importPath": "tests.test_auth",
+        "description": "tests.test_auth",
+        "peekOfCode": "class TestTokenVerification:\n    \"\"\"Test token verification logic\"\"\"\n    @patch('firebase_auth.verify_id_token')\n    def test_verify_valid_token(self, mock_verify):\n        \"\"\"Test verification of valid token\"\"\"\n        from firebase_auth import verify_token\n        mock_verify.return_value = {\n            'uid': 'test-uid',\n            'email': 'test@example.com',\n            'role': 'admin'",
+        "detail": "tests.test_auth",
+        "documentation": {}
+    },
+    {
+        "label": "TestUserRoles",
+        "kind": 6,
+        "importPath": "tests.test_auth",
+        "description": "tests.test_auth",
+        "peekOfCode": "class TestUserRoles:\n    \"\"\"Test user role handling\"\"\"\n    def test_admin_role_permissions(self):\n        \"\"\"Test admin role has correct permissions\"\"\"\n        # Admin should have access to:\n        # - Own organization cameras\n        # - Own organization alerts\n        # - User management within org\n        pass\n    def test_superadmin_role_permissions(self):",
+        "detail": "tests.test_auth",
+        "documentation": {}
+    },
+    {
+        "label": "TestAuthErrors",
+        "kind": 6,
+        "importPath": "tests.test_auth",
+        "description": "tests.test_auth",
+        "peekOfCode": "class TestAuthErrors:\n    \"\"\"Test authentication error handling\"\"\"\n    def test_missing_token_error(self):\n        \"\"\"Test error when token is missing\"\"\"\n        from firebase_auth import AuthError\n        error = AuthError(\"No token provided\", \"NO_TOKEN\")\n        assert error.message == \"No token provided\"\n        assert error.code == \"NO_TOKEN\"\n    def test_invalid_token_error(self):\n        \"\"\"Test error when token is invalid\"\"\"",
+        "detail": "tests.test_auth",
+        "documentation": {}
+    },
+    {
+        "label": "TestRateLimiterInitialization",
+        "kind": 6,
+        "importPath": "tests.test_rate_limit",
+        "description": "tests.test_rate_limit",
+        "peekOfCode": "class TestRateLimiterInitialization:\n    \"\"\"Test rate limiter initialization\"\"\"\n    def test_init_rate_limiter(self):\n        \"\"\"Test rate limiter initialization with Flask app\"\"\"\n        from flask import Flask\n        from rate_limit import init_rate_limiter\n        app = Flask(__name__)\n        app.config['TESTING'] = True\n        limiter = init_rate_limiter(app)\n        assert limiter is not None",
+        "detail": "tests.test_rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "TestRateLimitDecorators",
+        "kind": 6,
+        "importPath": "tests.test_rate_limit",
+        "description": "tests.test_rate_limit",
+        "peekOfCode": "class TestRateLimitDecorators:\n    \"\"\"Test rate limit decorators\"\"\"\n    @patch('rate_limit.limiter')\n    def test_auth_rate_limit_decorator(self, mock_limiter):\n        \"\"\"Test auth rate limit decorator\"\"\"\n        from rate_limit import auth_rate_limit\n        mock_limiter.limit = MagicMock(return_value=lambda f: f)\n        @auth_rate_limit\n        def test_function():\n            return \"success\"",
+        "detail": "tests.test_rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "TestCustomRateLimit",
+        "kind": 6,
+        "importPath": "tests.test_rate_limit",
+        "description": "tests.test_rate_limit",
+        "peekOfCode": "class TestCustomRateLimit:\n    \"\"\"Test custom rate limit functions\"\"\"\n    @patch('rate_limit.limiter')\n    def test_apply_rate_limit(self, mock_limiter):\n        \"\"\"Test applying custom rate limit\"\"\"\n        from rate_limit import apply_rate_limit\n        mock_limiter.limit = MagicMock(return_value=lambda f: f)\n        decorator = apply_rate_limit(\"10 per minute\")\n        @decorator\n        def test_function():",
+        "detail": "tests.test_rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "TestRateLimitStatus",
+        "kind": 6,
+        "importPath": "tests.test_rate_limit",
+        "description": "tests.test_rate_limit",
+        "peekOfCode": "class TestRateLimitStatus:\n    \"\"\"Test rate limit status functions\"\"\"\n    @patch('rate_limit.limiter')\n    def test_get_rate_limit_status_enabled(self, mock_limiter):\n        \"\"\"Test getting rate limit status when enabled\"\"\"\n        from rate_limit import get_rate_limit_status\n        status = get_rate_limit_status()\n        # When limiter is None, should return disabled\n        # When initialized, should return enabled\n        assert isinstance(status, dict)",
+        "detail": "tests.test_rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "TestExemptFromRateLimit",
+        "kind": 6,
+        "importPath": "tests.test_rate_limit",
+        "description": "tests.test_rate_limit",
+        "peekOfCode": "class TestExemptFromRateLimit:\n    \"\"\"Test exempt from rate limit decorator\"\"\"\n    @patch('rate_limit.limiter')\n    def test_exempt_from_rate_limit_decorator(self, mock_limiter):\n        \"\"\"Test exempt from rate limit decorator\"\"\"\n        from rate_limit import exempt_from_rate_limit\n        mock_limiter.exempt = MagicMock(return_value=lambda f: f)\n        @exempt_from_rate_limit\n        def test_function():\n            return \"success\"",
+        "detail": "tests.test_rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "TestRateLimitConfiguration",
+        "kind": 6,
+        "importPath": "tests.test_rate_limit",
+        "description": "tests.test_rate_limit",
+        "peekOfCode": "class TestRateLimitConfiguration:\n    \"\"\"Test rate limit configuration values\"\"\"\n    def test_auth_rate_limit_value(self):\n        \"\"\"Test auth endpoint has correct rate limit\"\"\"\n        # Auth endpoints: 5 requests per minute\n        # This is defined in the auth_rate_limit decorator\n        pass\n    def test_api_rate_limit_value(self):\n        \"\"\"Test API endpoint has correct rate limit\"\"\"\n        # API endpoints: 60 requests per minute",
+        "detail": "tests.test_rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "TestRateLimitStorage",
+        "kind": 6,
+        "importPath": "tests.test_rate_limit",
+        "description": "tests.test_rate_limit",
+        "peekOfCode": "class TestRateLimitStorage:\n    \"\"\"Test rate limit storage configuration\"\"\"\n    def test_memory_storage(self):\n        \"\"\"Test memory storage configuration\"\"\"\n        from flask import Flask\n        from rate_limit import init_rate_limiter\n        app = Flask(__name__)\n        limiter = init_rate_limiter(app)\n        # Should use memory storage for testing\n        assert limiter is not None",
+        "detail": "tests.test_rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "TestEmailValidation",
+        "kind": 6,
+        "importPath": "tests.test_validators",
+        "description": "tests.test_validators",
+        "peekOfCode": "class TestEmailValidation:\n    \"\"\"Test email validation functions\"\"\"\n    def test_validate_email_valid(self):\n        \"\"\"Test valid email passes validation\"\"\"\n        is_valid, error = validate_email('test@example.com')\n        assert is_valid is True\n        assert error == \"\"\n    def test_validate_email_invalid_format(self):\n        \"\"\"Test invalid email format fails validation\"\"\"\n        is_valid, error = validate_email('not-an-email')",
+        "detail": "tests.test_validators",
+        "documentation": {}
+    },
+    {
+        "label": "TestPasswordValidation",
+        "kind": 6,
+        "importPath": "tests.test_validators",
+        "description": "tests.test_validators",
+        "peekOfCode": "class TestPasswordValidation:\n    \"\"\"Test password validation functions\"\"\"\n    def test_validate_password_valid(self):\n        \"\"\"Test valid password passes validation\"\"\"\n        is_valid, error = validate_password_strength('Password1!')\n        assert is_valid is True\n        assert error == \"\"\n    def test_validate_password_too_short(self):\n        \"\"\"Test password under 8 characters fails\"\"\"\n        is_valid, error = validate_password_strength('Pass1!')",
+        "detail": "tests.test_validators",
+        "documentation": {}
+    },
+    {
+        "label": "TestCameraURLValidation",
+        "kind": 6,
+        "importPath": "tests.test_validators",
+        "description": "tests.test_validators",
+        "peekOfCode": "class TestCameraURLValidation:\n    \"\"\"Test camera URL validation functions\"\"\"\n    def test_validate_camera_url_valid_rtsp(self):\n        \"\"\"Test valid RTSP URL passes\"\"\"\n        is_valid, error = validate_camera_url('rtsp://example.com/stream')\n        assert is_valid is True\n        assert error == \"\"\n    def test_validate_camera_url_valid_rtsps(self):\n        \"\"\"Test valid RTSPS URL passes\"\"\"\n        is_valid, error = validate_camera_url('rtsps://example.com/stream')",
+        "detail": "tests.test_validators",
+        "documentation": {}
+    },
+    {
+        "label": "TestDateRangeValidation",
+        "kind": 6,
+        "importPath": "tests.test_validators",
+        "description": "tests.test_validators",
+        "peekOfCode": "class TestDateRangeValidation:\n    \"\"\"Test date range validation functions\"\"\"\n    def test_validate_date_range_valid(self):\n        \"\"\"Test valid date range passes\"\"\"\n        is_valid, error = validate_date_range(\n            '2024-01-01T00:00:00Z',\n            '2024-12-31T23:59:59Z'\n        )\n        assert is_valid is True\n    def test_validate_date_range_start_after_end(self):",
+        "detail": "tests.test_validators",
+        "documentation": {}
+    },
+    {
+        "label": "TestNameValidation",
+        "kind": 6,
+        "importPath": "tests.test_validators",
+        "description": "tests.test_validators",
+        "peekOfCode": "class TestNameValidation:\n    \"\"\"Test name validation functions\"\"\"\n    def test_validate_name_valid(self):\n        \"\"\"Test valid name passes\"\"\"\n        is_valid, error = validate_name('John Doe')\n        assert is_valid is True\n    def test_validate_name_too_short(self):\n        \"\"\"Test name under 2 characters fails\"\"\"\n        is_valid, error = validate_name('J')\n        assert is_valid is False",
+        "detail": "tests.test_validators",
+        "documentation": {}
+    },
+    {
+        "label": "TestOrganizationValidation",
+        "kind": 6,
+        "importPath": "tests.test_validators",
+        "description": "tests.test_validators",
+        "peekOfCode": "class TestOrganizationValidation:\n    \"\"\"Test organization name validation\"\"\"\n    def test_validate_organization_name_valid(self):\n        \"\"\"Test valid organization name passes\"\"\"\n        is_valid, error = validate_organization_name('Test Organization')\n        assert is_valid is True\n    def test_validate_organization_name_too_short(self):\n        \"\"\"Test organization name under 2 chars fails\"\"\"\n        is_valid, error = validate_organization_name('A')\n        assert is_valid is False",
+        "detail": "tests.test_validators",
+        "documentation": {}
+    },
+    {
+        "label": "TestCameraSettingsValidation",
+        "kind": 6,
+        "importPath": "tests.test_validators",
+        "description": "tests.test_validators",
+        "peekOfCode": "class TestCameraSettingsValidation:\n    \"\"\"Test camera settings validation\"\"\"\n    def test_validate_camera_settings_valid(self):\n        \"\"\"Test valid camera settings passes\"\"\"\n        data = {\n            'name': 'Front Camera',\n            'rtsp_url': 'rtsp://example.com/stream',\n            'location': 'Building A'\n        }\n        errors = validate_camera_settings(data)",
+        "detail": "tests.test_validators",
+        "documentation": {}
+    },
+    {
+        "label": "TestAlertFiltersValidation",
+        "kind": 6,
+        "importPath": "tests.test_validators",
+        "description": "tests.test_validators",
+        "peekOfCode": "class TestAlertFiltersValidation:\n    \"\"\"Test alert filters validation\"\"\"\n    def test_validate_alert_filters_valid(self):\n        \"\"\"Test valid alert filters passes\"\"\"\n        data = {\n            'type': 'theft',\n            'status': 'new',\n            'limit': 50,\n            'offset': 0\n        }",
+        "detail": "tests.test_validators",
+        "documentation": {}
+    },
+    {
+        "label": "BehaviorValidator",
+        "kind": 6,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "class BehaviorValidator:\n    def __init__(self):\n        self.alert_counters = {} \n        self.MIN_FRAMES_STEAL = 3\n        self.MIN_FRAMES_SUSP = 5\n    def get_temporal_validation(self, track_id, current_label):\n        if track_id not in self.alert_counters:\n            self.alert_counters[track_id] = {\"label\": \"Normal\", \"count\": 0}\n        counter = self.alert_counters[track_id]\n        if current_label == counter[\"label\"]:",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "RawRecorder",
+        "kind": 6,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "class RawRecorder:\n    def __init__(self, camera_name, storage_path, org_id=\"default\", fps=15.0):\n        self.camera_name = camera_name\n        self.storage_path = storage_path\n        self.org_id = org_id or \"default\"\n        self.fps = fps\n        self.writer = None\n        self.current_day = None\n    def _get_filename(self):\n        # Creates a filename like: D:/CCTV_Record/org123/Camera1/2026-03-27/09_30_05.webm",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "RTSPVideoStream",
+        "kind": 6,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "class RTSPVideoStream:\n    def __init__(self, src, original_url=None, name=None, is_youtube=False, org_id=\"default\"):\n        self.src = src\n        self.original_url = original_url if original_url else src \n        self.name = name\n        self.is_youtube = is_youtube\n        self.org_id = org_id\n        # Start with a dummy state to allow frontend to request the feed\n        self.ret = False\n        self.frame = None",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "add_youtube",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def add_youtube():\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    youtube_url = data.get(\"youtubeUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, youtube_url]):\n        return {\"error\": \"Missing data\"}, 400\n    # Check runtime duplicates in memory\n    if camera_name in cameras_dict:",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "add_camera",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def add_camera():\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    rtsp_url = data.get(\"rtspUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, rtsp_url]):\n        return {\"error\": \"Missing data\"}, 400\n    # Check runtime duplicates in memory\n    if camera_name in cameras_dict:",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "load_cameras_from_firestore",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def load_cameras_from_firestore():\n    cams = db.collection(\"cameras\").stream()\n    cameras = {}\n    for cam_doc in cams:\n        data = cam_doc.to_dict()\n        try:\n            camera_name = data.get(\"name\")        \n            rtsp_url = data.get(\"rtsp_url\")\n            # Check if this camera was flagged as a YouTube stream when it was added\n            is_youtube = data.get(\"is_youtube\", False)",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_emails_by_org",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def get_user_emails_by_org(org_id):\n    \"\"\"Kukunin lang ang emails ng STANDARD USERS (role='user') na nasa parehong org_id.\"\"\"\n    emails = []\n    print(f\"[EMAIL-DEBUG] Searching users for Org ID: {org_id}\")\n    if not org_id or org_id == \"none\" or org_id == \"default\":\n        print(f\"[EMAIL] Invalid or missing Org ID: {org_id}. Cannot fetch emails.\")\n        return emails\n    try:\n        # Use only one 'where' to match your existing Firestore index\n        # and filter the role manually in Python for better reliability",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "send_email_alert",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def send_email_alert(label, cloud_url, camera_name, org_id=None):\n    global EMAIL_LIMIT_REACHED\n    if not ENABLE_EMAILS or EMAIL_LIMIT_REACHED: \n        print(f\"[EMAIL] Email sending skipped. ENABLE_EMAILS={ENABLE_EMAILS}, LIMIT_REACHED={EMAIL_LIMIT_REACHED}\")\n        return\n    # Priority: passed org_id, then lookup from camera\n    target_org = org_id or get_org_id_for_camera(camera_name)\n    print(f\"[EMAIL-DEBUG] Attempting to send alert for {camera_name} in Org: {target_org}\")\n    recipient_list = get_user_emails_by_org(target_org)\n    if not recipient_list: ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "get_org_id_for_camera",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def get_org_id_for_camera(camera_name):\n    \"\"\"Kukunin ang org_id ng camera mula sa memory o Firestore.\n    FIX: Nag-aayos na rin ng null org_id sa Firestore nang automatic.\n    \"\"\"\n    # 0. PINAKA-MAAASAHAN: I-check ang in-memory cameras_dict muna\n    # Ito ang pinakamabilis at hindi na kailangan pang mag-query sa Firestore\n    if camera_name in cameras_dict:\n        cam = cameras_dict[camera_name]\n        if hasattr(cam, 'org_id') and cam.org_id and cam.org_id not in (\"default\", \"none\", None):\n            return cam.org_id",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "save_to_firebase",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def save_to_firebase(label, cloud_url, confidence_score, camera_name, track_id=None, org_id=None):\n    try:\n                MODEL_TRAINING_ACCURACY = 0.89 \n                # 2. REAL-TIME CONFIDENCE (Yung pabago-bagong hinala ng AI)\n                conf_pct = int(confidence_score)\n                if conf_pct >= 80:\n                    conf_str = f\"{conf_pct}% (HIGH)\"\n                elif conf_pct >= 50:\n                    conf_str = f\"{conf_pct}% (MODERATE)\"\n                else:",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "save_alert_clip",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def save_alert_clip(sliced_frames, label, track_id, confidence_score, fps=30, suspect_count=1, camera_name=\"\", org_id=None):\n    try:\n        if not sliced_frames: return\n        frames = list(sliced_frames)\n        ts_display = time.strftime(\"%Y-%m-%d %H:%M:%S\")\n        ts_file = time.strftime(\"%Y%m%d_%H%M%S\")\n        safe_label = label.replace(\":\", \"\").replace(\" \", \"_\")\n        os.makedirs(OUTPUT_DIR, exist_ok=True)\n        fn = f\"{OUTPUT_DIR}/{camera_name}_{safe_label}_ID{track_id}_{ts_file}.mp4\"\n        h, w, _ = frames[0].shape",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "get_centroid",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def get_centroid(kpts):\n    \"\"\"Returns the center (x, y) of the person based on keypoints.\"\"\"\n    xs = kpts[0::2]\n    ys = kpts[1::2]\n    return np.mean(xs), np.mean(ys)\ndef check_head_scanning(kpts, scan_history):\n    global SCAN_MIN_FRAMES\n    \"\"\"Detects sustained scanning (looking left then right).\"\"\"\n    nose_x = kpts[0]\n    left_sh_x = kpts[10] ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "check_head_scanning",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def check_head_scanning(kpts, scan_history):\n    global SCAN_MIN_FRAMES\n    \"\"\"Detects sustained scanning (looking left then right).\"\"\"\n    nose_x = kpts[0]\n    left_sh_x = kpts[10] \n    right_sh_x = kpts[12] \n    shoulder_width = abs(right_sh_x - left_sh_x)\n    if shoulder_width < 0.01: return False\n    look_ratio = (nose_x - left_sh_x) / shoulder_width\n    if look_ratio < 0.15: scan_history.append(\"LEFT\")",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "is_hand_near_face",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def is_hand_near_face(kpts, height_px):\n    nose_x, nose_y = kpts[0], kpts[1]\n    lw_x, lw_y = kpts[18], kpts[19]\n    rw_x, rw_y = kpts[20], kpts[21]\n    dist_l = np.hypot(lw_x - nose_x, lw_y - nose_y) * height_px\n    dist_r = np.hypot(rw_x - nose_x, rw_y - nose_y) * height_px\n    return dist_l < (height_px * 0.15) or dist_r < (height_px * 0.15)\ndef is_hand_in_stashing_zone(kpts, h_px):\n    \"\"\"Checks if hands are near hips or pockets relative to torso size.\"\"\"\n    lw_x, lw_y = kpts[18], kpts[19]",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "is_hand_in_stashing_zone",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def is_hand_in_stashing_zone(kpts, h_px):\n    \"\"\"Checks if hands are near hips or pockets relative to torso size.\"\"\"\n    lw_x, lw_y = kpts[18], kpts[19]\n    rw_x, rw_y = kpts[20], kpts[21]\n    l_hip_x, l_hip_y = kpts[22], kpts[23]\n    r_hip_x, r_hip_y = kpts[24], kpts[25]\n    shoulder_y = (kpts[11] + kpts[13]) / 2 \n    torso_h = abs((l_hip_y + r_hip_y)/2 - shoulder_y)\n    # 55% of torso height is a reliable stashing zone\n    dynamic_thresh = max(torso_h * 0.55, 0.05) ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "trigger_dynamic_save",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def trigger_dynamic_save(person, track_id, camera_name, org_id, fps):\n    frames = person.get('recording_frames', [])\n    label = person.get('recording_label', 'Anomaly')\n    acc = person.get('recording_acc', 0)\n    suspects = person.get('recording_suspects', 1)\n    person['is_recording'] = False\n    person['recording_frames'] = []\n    person['last_save_time'] = time.time()\n    if len(frames) < 15: return\n    print(f\"🎬 [FINALIZING CLIP] ID:{track_id} | Type:{label} | Duration:~{len(frames)/fps:.1f}s\")",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "save_instant_snapshot",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def save_instant_snapshot(frame, camera_name, org_id, label, track_id):\n    \"\"\"Saves and uploads a single frame immediately when detection starts.\"\"\"\n    try:\n        os.makedirs(OUTPUT_DIR, exist_ok=True)\n        ts = time.strftime(\"%Y%m%d_%H%M%S\")\n        fn = f\"{OUTPUT_DIR}/snap_{camera_name}_{track_id}_{ts}.jpg\"\n        cv2.imwrite(fn, frame)\n        # Background upload\n        def upload_task():\n            try:",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "gen_frames",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def gen_frames(camera_name):\n    camera = cameras_dict.get(camera_name)\n    if not camera: return\n    frame_buffer = deque(maxlen=BUFFER_SIZE)\n    frame_count = 0\n    prev_frame_time = 0\n    real_time_fps = 15.0 \n    last_processed_frame = None\n    while True:\n        ret, frame = camera.read()",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "get_cameras",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def get_cameras():\n    if request.method == 'OPTIONS': return '', 200\n    # ... rest of your code\n    org_id = request.args.get(\"org_id\", None)\n    cam_list = []\n    # Kunin lahat ng cameras mula sa Firestore\n    try:\n        if org_id:\n            # I-filter ang cameras sa Firestore base sa org_id\n            docs = db.collection(\"cameras\").where(\"org_id\", \"==\", org_id).stream()",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "delete_camera",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def delete_camera(camera_name):\n    # 1. Try to stop the stream if it's currently running in memory\n    if camera_name in cameras_dict:\n        try:\n            cam = cameras_dict[camera_name]\n            if hasattr(cam, 'stop'):\n                cam.stop()\n            elif hasattr(cam, 'stopped'):\n                cam.stopped = True\n            del cameras_dict[camera_name]",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "video_feed",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def video_feed(camera_name):\n    return Response(gen_frames(camera_name), mimetype='multipart/x-mixed-replace; boundary=frame')\n@app.route('/stream', strict_slashes=False)\n@exempt_from_rate_limit\ndef stream():\n    if request.method == 'OPTIONS':\n        return '', 200\n    \"\"\"\n    SSE stream endpoint. If sse_manager is available, it uses the proper\n    SSE response creator to allow for persistent real-time updates.",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "stream",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def stream():\n    if request.method == 'OPTIONS':\n        return '', 200\n    \"\"\"\n    SSE stream endpoint. If sse_manager is available, it uses the proper\n    SSE response creator to allow for persistent real-time updates.\n    \"\"\"\n    if SSE_AVAILABLE:\n        try:\n            from sse_manager import create_sse_response",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "get_logs",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def get_logs():\n    org_id = request.args.get(\"org_id\", None)\n    if not org_id:\n        return jsonify([])\n    try:\n        # ALIGNED FIX: Ordering by 'created_at' to match your Firestore Composite Index\n        query = db.collection(\"detections\").where(\"org_id\", \"==\", org_id)\n        docs = query.order_by(\"created_at\", direction=firestore.Query.DESCENDING).limit(20).stream()\n        logs = []\n        for doc in docs:",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "get_detection_settings",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def get_detection_settings():\n    return {\n        \"stillness_limit_seconds\": STILLNESS_LIMIT / FPS_ESTIMATE,\n        \"dist_speed_threshold\":    DETECTION_DIST_SPEED,\n        \"history_seconds\":         HISTORY_SECONDS,\n        \"pacing_path_mult\":        DETECTION_PACING_MULT,\n        \"loiter_area_w\":           DETECTION_LOITER_W,\n        \"loiter_area_h\":           DETECTION_LOITER_H,\n        \"pose_threshold\":          POSE_THRESHOLD, \n        \"steal_threshold\":         STEAL_THRESH,",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "update_detection_settings",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def update_detection_settings():\n    global STILLNESS_LIMIT, HISTORY_SECONDS, HISTORY_LEN\n    global STEAL_THRESH, SCAN_MIN_FRAMES, POSE_THRESHOLD\n    global DETECTION_DIST_SPEED, DETECTION_PACING_MULT\n    global DETECTION_LOITER_W, DETECTION_LOITER_H, TARGET_FPS\n    data = request.get_json()\n    if \"stillness_limit_seconds\" in data:\n        STILLNESS_LIMIT = float(data[\"stillness_limit_seconds\"]) * FPS_ESTIMATE\n    if \"history_seconds\" in data:\n        HISTORY_SECONDS = float(data[\"history_seconds\"])",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def delete_user(user_id):\n    try:\n        from firebase_admin import auth as firebase_auth\n        firebase_auth.delete_user(user_id)\n        print(f\"[INFO] User deleted from Auth: {user_id}\")\n        return {\"message\": f\"User {user_id} deleted from Firebase Auth.\"}, 200\n    except Exception as e:\n        print(f\"!! Error deleting user from Auth: {e}\")\n        return {\"error\": str(e)}, 500\nfrom flask import send_from_directory",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "enforce_retention_policy",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def enforce_retention_policy(org_id):\n    \"\"\"Checks the org folder and moves folders older than 14 days to the Bin.\"\"\"\n    org_path = os.path.join(SD_CARD_PATH, org_id)\n    bin_org_path = os.path.join(BIN_PATH, org_id)\n    if not os.path.exists(org_path):\n        return\n    now = datetime.now()\n    for camera_name in os.listdir(org_path):\n        cam_path = os.path.join(org_path, camera_name)\n        if not os.path.isdir(cam_path): continue",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "get_recorded_cameras",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def get_recorded_cameras():\n    if request.method == 'OPTIONS': return '', 200\n    org_id = request.args.get(\"org_id\", \"default\").strip()\n    is_bin = request.args.get(\"is_bin\", \"false\").lower() == \"true\"\n    if not is_bin:\n        enforce_retention_policy(org_id)\n    base_path = BIN_PATH if is_bin else SD_CARD_PATH\n    org_path = os.path.join(base_path, org_id)\n    if not os.path.exists(org_path):\n        return {\"cameras\": []}, 200",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "get_recordings",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def get_recordings():\n    camera_name = request.args.get(\"camera\", \"\").strip()\n    date_str = request.args.get(\"date\", \"\").strip() \n    org_id = request.args.get(\"org_id\", \"default\").strip()\n    is_bin = request.args.get(\"is_bin\", \"false\").lower() == \"true\"\n    if not camera_name or not date_str:\n        return {\"error\": \"Missing parameters\"}, 400\n    date_str = date_str.replace(\"/\", \"-\")\n    base_path = BIN_PATH if is_bin else SD_CARD_PATH\n    org_path = os.path.join(base_path, org_id)",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "play_record",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def play_record():\n    camera_name = request.args.get(\"camera\")\n    date_str = request.args.get(\"date\")\n    file_name = request.args.get(\"file\")\n    org_id = request.args.get(\"org_id\", \"default\")\n    is_bin = request.args.get(\"is_bin\", \"false\").lower() == \"true\"\n    base_path = BIN_PATH if is_bin else SD_CARD_PATH\n    folder_path = os.path.abspath(os.path.join(base_path, org_id, camera_name, date_str))\n    file_path = os.path.join(folder_path, file_name)\n    if not os.path.exists(file_path):",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "delete_raw_record",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def delete_raw_record():\n    data = request.get_json()\n    camera_name = data.get(\"camera\")\n    date_str = data.get(\"date\")\n    file_name = data.get(\"file\")\n    org_id = data.get(\"org_id\", \"default\")\n    if not all([camera_name, date_str, file_name, org_id]):\n        return {\"error\": \"Missing parameters\"}, 400\n    # Kunin ang pinanggalingan ng file (Source)\n    src_folder = os.path.join(SD_CARD_PATH, org_id, camera_name, date_str)",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "restore_raw_record",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def restore_raw_record():\n    import shutil\n    import os\n    SD_CARD_PATH = \"D:/CCTV_Record\" \n    BIN_PATH = \"D:/CCTV_Record_Bin\" \n    data = request.get_json()\n    camera_name = data.get(\"camera\")\n    date_str = data.get(\"date\")\n    file_name = data.get(\"file\")\n    org_id = data.get(\"org_id\", \"default\")",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "permanent_delete_raw_record",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def permanent_delete_raw_record():\n    import os\n    BIN_PATH = \"D:/CCTV_Record_Bin\" \n    data = request.get_json()\n    camera_name = data.get(\"camera\")\n    date_str = data.get(\"date\")\n    file_name = data.get(\"file\")\n    org_id = data.get(\"org_id\", \"default\")\n    if not all([camera_name, date_str, file_name, org_id]):\n        return {\"error\": \"Missing parameters\"}, 400",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "delete_alert_video",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def delete_alert_video():\n    data = request.get_json()\n    video_url = data.get(\"video_url\")\n    if not video_url or \"cloudinary\" not in video_url:\n        return {\"message\": \"No remote video to delete or invalid URL\"}, 200\n    try:\n        # Extract public_id from Cloudinary URL\n        # Example: https://res.cloudinary.com/cloud_name/video/upload/v12345/folder/public_id.mp4\n        # We need everything after /upload/ (excluding version and extension)\n        parts = video_url.split('/upload/')",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "ENABLE_EMAILS",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "ENABLE_EMAILS = True \nEMAIL_SENDER = os.environ.get('EMAIL_SENDER', 'christinerealino6@gmail.com')\nEMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD', 'hexy ofyf kctc ardx') \nANOMALY_MODEL_PATH = 'anomaly_detector.keras'\nSTEALING_MODEL_PATH = 'stealing_classifier.keras'\nYOLO_MODEL = 'yolov8n-pose.pt'\nLOG_FILE = \"ai_model/detections_log.json\"\nOUTPUT_DIR = \"ai_model/detections\"\nRAW_RECORDING_DIR = os.environ.get('RAW_RECORDING_DIR', 'D:/CCTV_Record')\nENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_SENDER",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "EMAIL_SENDER = os.environ.get('EMAIL_SENDER', 'christinerealino6@gmail.com')\nEMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD', 'hexy ofyf kctc ardx') \nANOMALY_MODEL_PATH = 'anomaly_detector.keras'\nSTEALING_MODEL_PATH = 'stealing_classifier.keras'\nYOLO_MODEL = 'yolov8n-pose.pt'\nLOG_FILE = \"ai_model/detections_log.json\"\nOUTPUT_DIR = \"ai_model/detections\"\nRAW_RECORDING_DIR = os.environ.get('RAW_RECORDING_DIR', 'D:/CCTV_Record')\nENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'\n# THRESHOLDS ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_PASSWORD",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD', 'hexy ofyf kctc ardx') \nANOMALY_MODEL_PATH = 'anomaly_detector.keras'\nSTEALING_MODEL_PATH = 'stealing_classifier.keras'\nYOLO_MODEL = 'yolov8n-pose.pt'\nLOG_FILE = \"ai_model/detections_log.json\"\nOUTPUT_DIR = \"ai_model/detections\"\nRAW_RECORDING_DIR = os.environ.get('RAW_RECORDING_DIR', 'D:/CCTV_Record')\nENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'\n# THRESHOLDS \nPOSE_THRESHOLD = 0.18       ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "ANOMALY_MODEL_PATH",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "ANOMALY_MODEL_PATH = 'anomaly_detector.keras'\nSTEALING_MODEL_PATH = 'stealing_classifier.keras'\nYOLO_MODEL = 'yolov8n-pose.pt'\nLOG_FILE = \"ai_model/detections_log.json\"\nOUTPUT_DIR = \"ai_model/detections\"\nRAW_RECORDING_DIR = os.environ.get('RAW_RECORDING_DIR', 'D:/CCTV_Record')\nENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'\n# THRESHOLDS \nPOSE_THRESHOLD = 0.18       \n# Aggressive Mode",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "STEALING_MODEL_PATH",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "STEALING_MODEL_PATH = 'stealing_classifier.keras'\nYOLO_MODEL = 'yolov8n-pose.pt'\nLOG_FILE = \"ai_model/detections_log.json\"\nOUTPUT_DIR = \"ai_model/detections\"\nRAW_RECORDING_DIR = os.environ.get('RAW_RECORDING_DIR', 'D:/CCTV_Record')\nENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'\n# THRESHOLDS \nPOSE_THRESHOLD = 0.18       \n# Aggressive Mode\nSTEAL_THRESH = 0.20        ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "YOLO_MODEL",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "YOLO_MODEL = 'yolov8n-pose.pt'\nLOG_FILE = \"ai_model/detections_log.json\"\nOUTPUT_DIR = \"ai_model/detections\"\nRAW_RECORDING_DIR = os.environ.get('RAW_RECORDING_DIR', 'D:/CCTV_Record')\nENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'\n# THRESHOLDS \nPOSE_THRESHOLD = 0.18       \n# Aggressive Mode\nSTEAL_THRESH = 0.20        \n# Email Threshold",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "LOG_FILE",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "LOG_FILE = \"ai_model/detections_log.json\"\nOUTPUT_DIR = \"ai_model/detections\"\nRAW_RECORDING_DIR = os.environ.get('RAW_RECORDING_DIR', 'D:/CCTV_Record')\nENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'\n# THRESHOLDS \nPOSE_THRESHOLD = 0.18       \n# Aggressive Mode\nSTEAL_THRESH = 0.20        \n# Email Threshold\nEMAIL_MIN_ACCURACY = 50 ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "OUTPUT_DIR",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "OUTPUT_DIR = \"ai_model/detections\"\nRAW_RECORDING_DIR = os.environ.get('RAW_RECORDING_DIR', 'D:/CCTV_Record')\nENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'\n# THRESHOLDS \nPOSE_THRESHOLD = 0.18       \n# Aggressive Mode\nSTEAL_THRESH = 0.20        \n# Email Threshold\nEMAIL_MIN_ACCURACY = 50 \nSCAN_MIN_FRAMES = 5",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "RAW_RECORDING_DIR",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "RAW_RECORDING_DIR = os.environ.get('RAW_RECORDING_DIR', 'D:/CCTV_Record')\nENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'\n# THRESHOLDS \nPOSE_THRESHOLD = 0.18       \n# Aggressive Mode\nSTEAL_THRESH = 0.20        \n# Email Threshold\nEMAIL_MIN_ACCURACY = 50 \nSCAN_MIN_FRAMES = 5\n# TIMERS ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "ENABLE_RAW_RECORDING",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "ENABLE_RAW_RECORDING = os.environ.get('ENABLE_RAW_RECORDING', 'True').lower() == 'true'\n# THRESHOLDS \nPOSE_THRESHOLD = 0.18       \n# Aggressive Mode\nSTEAL_THRESH = 0.20        \n# Email Threshold\nEMAIL_MIN_ACCURACY = 50 \nSCAN_MIN_FRAMES = 5\n# TIMERS \nHISTORY_SECONDS = 20               ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "POSE_THRESHOLD",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "POSE_THRESHOLD = 0.18       \n# Aggressive Mode\nSTEAL_THRESH = 0.20        \n# Email Threshold\nEMAIL_MIN_ACCURACY = 50 \nSCAN_MIN_FRAMES = 5\n# TIMERS \nHISTORY_SECONDS = 20               \nFPS_ESTIMATE = 15\nHISTORY_LEN = HISTORY_SECONDS * FPS_ESTIMATE",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "STEAL_THRESH",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "STEAL_THRESH = 0.20        \n# Email Threshold\nEMAIL_MIN_ACCURACY = 50 \nSCAN_MIN_FRAMES = 5\n# TIMERS \nHISTORY_SECONDS = 20               \nFPS_ESTIMATE = 15\nHISTORY_LEN = HISTORY_SECONDS * FPS_ESTIMATE\nSTILLNESS_LIMIT = 20 * FPS_ESTIMATE \nSCAN_WINDOW_SEC = 4 ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_MIN_ACCURACY",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "EMAIL_MIN_ACCURACY = 50 \nSCAN_MIN_FRAMES = 5\n# TIMERS \nHISTORY_SECONDS = 20               \nFPS_ESTIMATE = 15\nHISTORY_LEN = HISTORY_SECONDS * FPS_ESTIMATE\nSTILLNESS_LIMIT = 20 * FPS_ESTIMATE \nSCAN_WINDOW_SEC = 4 \nSCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE\nLOGIC_SKIP = 2 ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "SCAN_MIN_FRAMES",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "SCAN_MIN_FRAMES = 5\n# TIMERS \nHISTORY_SECONDS = 20               \nFPS_ESTIMATE = 15\nHISTORY_LEN = HISTORY_SECONDS * FPS_ESTIMATE\nSTILLNESS_LIMIT = 20 * FPS_ESTIMATE \nSCAN_WINDOW_SEC = 4 \nSCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE\nLOGIC_SKIP = 2 \nALERT_MAX_DURATION = 10.0           ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "HISTORY_SECONDS",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "HISTORY_SECONDS = 20               \nFPS_ESTIMATE = 15\nHISTORY_LEN = HISTORY_SECONDS * FPS_ESTIMATE\nSTILLNESS_LIMIT = 20 * FPS_ESTIMATE \nSCAN_WINDOW_SEC = 4 \nSCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE\nLOGIC_SKIP = 2 \nALERT_MAX_DURATION = 10.0           \nROUTINE_COOLDOWN = 20.\nDEBUG_MODE = True ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "FPS_ESTIMATE",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "FPS_ESTIMATE = 15\nHISTORY_LEN = HISTORY_SECONDS * FPS_ESTIMATE\nSTILLNESS_LIMIT = 20 * FPS_ESTIMATE \nSCAN_WINDOW_SEC = 4 \nSCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE\nLOGIC_SKIP = 2 \nALERT_MAX_DURATION = 10.0           \nROUTINE_COOLDOWN = 20.\nDEBUG_MODE = True \n#  VIDEO CONFIGURATION ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "HISTORY_LEN",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "HISTORY_LEN = HISTORY_SECONDS * FPS_ESTIMATE\nSTILLNESS_LIMIT = 20 * FPS_ESTIMATE \nSCAN_WINDOW_SEC = 4 \nSCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE\nLOGIC_SKIP = 2 \nALERT_MAX_DURATION = 10.0           \nROUTINE_COOLDOWN = 20.\nDEBUG_MODE = True \n#  VIDEO CONFIGURATION \nTARGET_FPS = 30.0               ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "STILLNESS_LIMIT",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "STILLNESS_LIMIT = 20 * FPS_ESTIMATE \nSCAN_WINDOW_SEC = 4 \nSCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE\nLOGIC_SKIP = 2 \nALERT_MAX_DURATION = 10.0           \nROUTINE_COOLDOWN = 20.\nDEBUG_MODE = True \n#  VIDEO CONFIGURATION \nTARGET_FPS = 30.0               \nFRAME_DELAY = 1.0 / TARGET_FPS ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "SCAN_WINDOW_SEC",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "SCAN_WINDOW_SEC = 4 \nSCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE\nLOGIC_SKIP = 2 \nALERT_MAX_DURATION = 10.0           \nROUTINE_COOLDOWN = 20.\nDEBUG_MODE = True \n#  VIDEO CONFIGURATION \nTARGET_FPS = 30.0               \nFRAME_DELAY = 1.0 / TARGET_FPS \nBUFFER_SECONDS = 20              ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "SCAN_LEN",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "SCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE\nLOGIC_SKIP = 2 \nALERT_MAX_DURATION = 10.0           \nROUTINE_COOLDOWN = 20.\nDEBUG_MODE = True \n#  VIDEO CONFIGURATION \nTARGET_FPS = 30.0               \nFRAME_DELAY = 1.0 / TARGET_FPS \nBUFFER_SECONDS = 20              \nBUFFER_SIZE = int(TARGET_FPS * BUFFER_SECONDS)",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "LOGIC_SKIP",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "LOGIC_SKIP = 2 \nALERT_MAX_DURATION = 10.0           \nROUTINE_COOLDOWN = 20.\nDEBUG_MODE = True \n#  VIDEO CONFIGURATION \nTARGET_FPS = 30.0               \nFRAME_DELAY = 1.0 / TARGET_FPS \nBUFFER_SECONDS = 20              \nBUFFER_SIZE = int(TARGET_FPS * BUFFER_SECONDS)\n# Global flag for email limit",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "ALERT_MAX_DURATION",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "ALERT_MAX_DURATION = 10.0           \nROUTINE_COOLDOWN = 20.\nDEBUG_MODE = True \n#  VIDEO CONFIGURATION \nTARGET_FPS = 30.0               \nFRAME_DELAY = 1.0 / TARGET_FPS \nBUFFER_SECONDS = 20              \nBUFFER_SIZE = int(TARGET_FPS * BUFFER_SECONDS)\n# Global flag for email limit\nEMAIL_LIMIT_REACHED = False",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "ROUTINE_COOLDOWN",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "ROUTINE_COOLDOWN = 20.\nDEBUG_MODE = True \n#  VIDEO CONFIGURATION \nTARGET_FPS = 30.0               \nFRAME_DELAY = 1.0 / TARGET_FPS \nBUFFER_SECONDS = 20              \nBUFFER_SIZE = int(TARGET_FPS * BUFFER_SECONDS)\n# Global flag for email limit\nEMAIL_LIMIT_REACHED = False\n# Detection tunable settings",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG_MODE",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "DEBUG_MODE = True \n#  VIDEO CONFIGURATION \nTARGET_FPS = 30.0               \nFRAME_DELAY = 1.0 / TARGET_FPS \nBUFFER_SECONDS = 20              \nBUFFER_SIZE = int(TARGET_FPS * BUFFER_SECONDS)\n# Global flag for email limit\nEMAIL_LIMIT_REACHED = False\n# Detection tunable settings\nDETECTION_DIST_SPEED  = 8.0",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "TARGET_FPS",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "TARGET_FPS = 30.0               \nFRAME_DELAY = 1.0 / TARGET_FPS \nBUFFER_SECONDS = 20              \nBUFFER_SIZE = int(TARGET_FPS * BUFFER_SECONDS)\n# Global flag for email limit\nEMAIL_LIMIT_REACHED = False\n# Detection tunable settings\nDETECTION_DIST_SPEED  = 8.0\nDETECTION_PACING_MULT = 1.0\nDETECTION_LOITER_W    = 0.35",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "FRAME_DELAY",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "FRAME_DELAY = 1.0 / TARGET_FPS \nBUFFER_SECONDS = 20              \nBUFFER_SIZE = int(TARGET_FPS * BUFFER_SECONDS)\n# Global flag for email limit\nEMAIL_LIMIT_REACHED = False\n# Detection tunable settings\nDETECTION_DIST_SPEED  = 8.0\nDETECTION_PACING_MULT = 1.0\nDETECTION_LOITER_W    = 0.35\nDETECTION_LOITER_H    = 0.35",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "BUFFER_SECONDS",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "BUFFER_SECONDS = 20              \nBUFFER_SIZE = int(TARGET_FPS * BUFFER_SECONDS)\n# Global flag for email limit\nEMAIL_LIMIT_REACHED = False\n# Detection tunable settings\nDETECTION_DIST_SPEED  = 8.0\nDETECTION_PACING_MULT = 1.0\nDETECTION_LOITER_W    = 0.35\nDETECTION_LOITER_H    = 0.35\n#  PRECISION LOGIC HELPERS",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "BUFFER_SIZE",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "BUFFER_SIZE = int(TARGET_FPS * BUFFER_SECONDS)\n# Global flag for email limit\nEMAIL_LIMIT_REACHED = False\n# Detection tunable settings\nDETECTION_DIST_SPEED  = 8.0\nDETECTION_PACING_MULT = 1.0\nDETECTION_LOITER_W    = 0.35\nDETECTION_LOITER_H    = 0.35\n#  PRECISION LOGIC HELPERS\nclass BehaviorValidator:",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_LIMIT_REACHED",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "EMAIL_LIMIT_REACHED = False\n# Detection tunable settings\nDETECTION_DIST_SPEED  = 8.0\nDETECTION_PACING_MULT = 1.0\nDETECTION_LOITER_W    = 0.35\nDETECTION_LOITER_H    = 0.35\n#  PRECISION LOGIC HELPERS\nclass BehaviorValidator:\n    def __init__(self):\n        self.alert_counters = {} ",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "DETECTION_PACING_MULT",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "DETECTION_PACING_MULT = 1.0\nDETECTION_LOITER_W    = 0.35\nDETECTION_LOITER_H    = 0.35\n#  PRECISION LOGIC HELPERS\nclass BehaviorValidator:\n    def __init__(self):\n        self.alert_counters = {} \n        self.MIN_FRAMES_STEAL = 3\n        self.MIN_FRAMES_SUSP = 5\n    def get_temporal_validation(self, track_id, current_label):",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "validator",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "validator = BehaviorValidator()\n#  INITIALIZATION\napp = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://bejewelled-cucurucho-944a9f.netlify.app\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize security modules if available",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "app = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://bejewelled-cucurucho-944a9f.netlify.app\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize security modules if available\nif SECURITY_AVAILABLE:\n    try:",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "cameras_dict",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\"])\ndef add_youtube():\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    youtube_url = data.get(\"youtubeUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, youtube_url]):\n        return {\"error\": \"Missing data\"}, 400",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "db = firestore.client()\n# VIDEO STREAM CLASS\nclass RawRecorder:\n    def __init__(self, camera_name, storage_path, org_id=\"default\", fps=15.0):\n        self.camera_name = camera_name\n        self.storage_path = storage_path\n        self.org_id = org_id or \"default\"\n        self.fps = fps\n        self.writer = None\n        self.current_day = None",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "cameras_dict",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "cameras_dict = load_cameras_from_firestore()\ncloudinary.config(\n    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME', 'dog6t9mx5'),\n    api_key=os.environ.get('CLOUDINARY_API_KEY', '275631287775487'),\n    api_secret=os.environ.get('CLOUDINARY_API_SECRET', '-41zZjN0GR1xVpx5lhBjvomKDAM'),\n    secure=True\n)\nprint(\">> Loading AI Models on Nitro V 15...\")\ntry:\n    lstm_model = load_model(ANOMALY_MODEL_PATH)",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "people_states",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "people_states = {}\n# --- HELPER FOR DYNAMIC RECORDING & SNAPSHOTS ---\ndef trigger_dynamic_save(person, track_id, camera_name, org_id, fps):\n    frames = person.get('recording_frames', [])\n    label = person.get('recording_label', 'Anomaly')\n    acc = person.get('recording_acc', 0)\n    suspects = person.get('recording_suspects', 1)\n    person['is_recording'] = False\n    person['recording_frames'] = []\n    person['last_save_time'] = time.time()",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "SD_CARD_PATH",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "SD_CARD_PATH = \"D:/CCTV_Record\" \nBIN_PATH = \"D:/CCTV_Record_Bin\"\nRETENTION_DAYS = 14\ndef enforce_retention_policy(org_id):\n    \"\"\"Checks the org folder and moves folders older than 14 days to the Bin.\"\"\"\n    org_path = os.path.join(SD_CARD_PATH, org_id)\n    bin_org_path = os.path.join(BIN_PATH, org_id)\n    if not os.path.exists(org_path):\n        return\n    now = datetime.now()",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "BIN_PATH",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "BIN_PATH = \"D:/CCTV_Record_Bin\"\nRETENTION_DAYS = 14\ndef enforce_retention_policy(org_id):\n    \"\"\"Checks the org folder and moves folders older than 14 days to the Bin.\"\"\"\n    org_path = os.path.join(SD_CARD_PATH, org_id)\n    bin_org_path = os.path.join(BIN_PATH, org_id)\n    if not os.path.exists(org_path):\n        return\n    now = datetime.now()\n    for camera_name in os.listdir(org_path):",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "RETENTION_DAYS",
+        "kind": 5,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "RETENTION_DAYS = 14\ndef enforce_retention_policy(org_id):\n    \"\"\"Checks the org folder and moves folders older than 14 days to the Bin.\"\"\"\n    org_path = os.path.join(SD_CARD_PATH, org_id)\n    bin_org_path = os.path.join(BIN_PATH, org_id)\n    if not os.path.exists(org_path):\n        return\n    now = datetime.now()\n    for camera_name in os.listdir(org_path):\n        cam_path = os.path.join(org_path, camera_name)",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "validate_and_get_camera_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def validate_and_get_camera_data():\n    \"\"\"Validate camera settings from request\"\"\"\n    data = request.get_json()\n    if not data:\n        raise ValidationError(\"Request body is required\")\n    errors = validate_camera_settings(data)\n    if errors:\n        raise ValidationError(\"Validation failed\", errors=errors)\n    return data\n# ============== Camera Endpoints ==============",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "add_camera",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def add_camera():\n    \"\"\"\n    Add a camera to the system.\n    Requires Firebase authentication.\n    Rate limited: 60 requests/minute\n    Saves to Firebase Firestore.\n    \"\"\"\n    data = validate_and_get_camera_data()\n    name = data.get(\"cameraName\") or data.get(\"name\")\n    url = data.get(\"rtspUrl\") or data.get(\"rtsp_url\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_cameras",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_cameras():\n    \"\"\"\n    Get all cameras.\n    Requires Firebase authentication.\n    Rate limited: 60 requests/minute\n    Fetches from Firebase Firestore.\n    \"\"\"\n    org_id = request.args.get(\"org_id\", \"default\")\n    # Fetch cameras from Firestore filtered by org_id\n    cameras_ref = db.collection(\"cameras\").where(\"org_id\", \"==\", org_id)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "remove_camera",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def remove_camera():\n    \"\"\"\n    Remove a camera from the system.\n    Requires Firebase authentication.\n    Rate limited: 60 requests/minute\n    Deletes from Firebase Firestore.\n    \"\"\"\n    data = request.get_json()\n    name = data.get(\"cameraName\")\n    if not name:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def delete_user(user_id):\n    \"\"\"\n    Delete a user from the system.\n    Requires Firebase authentication and admin/superadmin role.\n    Rate limited: 60 requests/minute\n    \"\"\"\n    # Get current user info for audit logging\n    current_user = get_current_user()\n    current_user_id = current_user.get('uid') if current_user else 'unknown'\n    # Log user deletion",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "sse_stream",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def sse_stream():\n    \"\"\"\n    Server-Sent Events endpoint for real-time updates.\n    Rate limited: exempt (SSE connections are long-lived)\n    Query parameters:\n    - events: Comma-separated list of event types to subscribe to\n              Options: alert, camera_status, detection, health\n    - client_id: Optional client identifier (generated if not provided)\n    Example: /stream?events=alert,camera_status&client_id=my-client\n    \"\"\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "sse_emit_alert",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def sse_emit_alert():\n    \"\"\"\n    Endpoint to emit an alert via SSE.\n    Used by external services to broadcast alerts.\n    Rate limited: 60 requests/minute\n    \"\"\"\n    data = request.get_json()\n    # Try to get org_id from data or from camera\n    camera_name = data.get('camera_name')\n    org_id = data.get('org_id')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "sse_emit_camera_status",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def sse_emit_camera_status():\n    \"\"\"\n    Endpoint to emit camera status updates via SSE.\n    Rate limited: 60 requests/minute\n    \"\"\"\n    data = request.get_json()\n    camera_name = data.get('camera_name')\n    status = data.get('status', 'unknown')\n    org_id = data.get('org_id')\n    if not camera_name:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "sse_stats",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def sse_stats():\n    \"\"\"\n    Get SSE connection statistics.\n    Rate limited: 60 requests/minute\n    \"\"\"\n    from sse_manager import sse_manager\n    return jsonify({\n        \"subscriptions\": sse_manager.get_all_subscriptions()\n    }), 200\n@app.route(\"/health\", methods=[\"GET\"])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "health_check",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def health_check():\n    \"\"\"\n    Health check endpoint - no authentication required.\n    Rate limited: exempt\n    \"\"\"\n    return jsonify({\"status\": \"healthy\", \"service\": \"tine-backend\"}), 200\n# ============== Error Handlers ==============\n@app.route(\"/error-test\", methods=[\"GET\"])\n@api_rate_limit\ndef test_error():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "test_error",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def test_error():\n    \"\"\"Test endpoint to verify error handling\"\"\"\n    raise ValidationError(\"This is a test validation error\", errors={'test': ['test error']})\nif __name__ == \"__main__\":\n    app.run(debug=True, port=5000)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "db = firestore.client()\n# Import security and validation modules\nfrom firebase_auth import require_auth, require_role, get_current_user\nfrom validators import (\n    validate_camera_settings,\n    validate_alert_filters,\n    ValidationError as TINEValidationError\n)\nfrom rate_limit import (\n    init_rate_limiter,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://bejewelled-cucurucho-944a9f.netlify.app\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize rate limiter\ninit_rate_limiter(app)\n# Initialize audit logger\ninit_audit_logger(app)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "AuditAction",
+        "kind": 6,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "class AuditAction:\n    # Authentication actions\n    LOGIN = \"LOGIN\"\n    LOGOUT = \"LOGOUT\"\n    LOGIN_FAILED = \"LOGIN_FAILED\"\n    PASSWORD_CHANGE = \"PASSWORD_CHANGE\"\n    # User actions\n    USER_CREATE = \"USER_CREATE\"\n    USER_UPDATE = \"USER_UPDATE\"\n    USER_DELETE = \"USER_DELETE\"",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "init_audit_logger",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def init_audit_logger(app, log_dir: str = \"logs\") -> logging.Logger:\n    \"\"\"\n    Initialize the audit logger with Flask app.\n    Args:\n        app: Flask application instance\n        log_dir: Directory to store audit logs\n    Returns:\n        Configured audit logger\n    \"\"\"\n    global audit_logger",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "get_audit_logger",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def get_audit_logger() -> Optional[logging.Logger]:\n    \"\"\"\n    Get the audit logger instance.\n    Returns:\n        Audit logger instance\n    \"\"\"\n    return audit_logger\n# ============== Helper Functions ==============\ndef get_client_ip() -> str:\n    \"\"\"Get client IP address from request\"\"\"",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "get_client_ip",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def get_client_ip() -> str:\n    \"\"\"Get client IP address from request\"\"\"\n    if has_request_context():\n        # Check for forwarded header (if behind proxy)\n        if request.headers.get('X-Forwarded-For'):\n            return request.headers.get('X-Forwarded-For').split(',')[0].strip()\n        return request.remote_addr or 'unknown'\n    return 'no-request'\ndef get_current_user_id() -> Optional[str]:\n    \"\"\"Get current user ID from request context\"\"\"",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_user_id",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def get_current_user_id() -> Optional[str]:\n    \"\"\"Get current user ID from request context\"\"\"\n    if has_request_context():\n        if hasattr(g, 'current_user') and g.current_user:\n            return g.current_user.get('uid')\n        # Try to get from Firebase auth header\n        auth_header = request.headers.get('Authorization', '')\n        if auth_header.startswith('Bearer '):\n            # This would typically decode the token\n            return 'authenticated-user'",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "get_request_info",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def get_request_info() -> Dict[str, Any]:\n    \"\"\"Get current request information\"\"\"\n    if has_request_context():\n        return {\n            'endpoint': request.endpoint or 'unknown',\n            'method': request.method,\n            'path': request.path,\n            'ip_address': get_client_ip(),\n            'user_agent': request.headers.get('User-Agent', 'unknown')\n        }",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "log_audit",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def log_audit(\n    action: str,\n    user_id: Optional[str] = None,\n    details: Optional[Dict[str, Any]] = None,\n    level: str = 'INFO'\n) -> None:\n    \"\"\"\n    Log an audit event.\n    Args:\n        action: The action being logged",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "log_api_request",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def log_api_request(\n    endpoint: str,\n    method: str,\n    user_id: Optional[str] = None,\n    params: Optional[Dict[str, Any]] = None\n) -> None:\n    \"\"\"\n    Log an API request.\n    Args:\n        endpoint: API endpoint",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "log_user_action",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def log_user_action(\n    action: str,\n    user_id: str,\n    target_id: Optional[str] = None,\n    details: Optional[Dict[str, Any]] = None\n) -> None:\n    \"\"\"\n    Log a user action.\n    Args:\n        action: Action performed",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "log_error",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def log_error(\n    action: str,\n    error: Exception,\n    user_id: Optional[str] = None,\n    details: Optional[Dict[str, Any]] = None\n) -> None:\n    \"\"\"\n    Log an error event.\n    Args:\n        action: Action that caused the error",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "audit_log",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def audit_log(action: str):\n    \"\"\"\n    Decorator to automatically log function calls.\n    Args:\n        action: The action to log\n    Returns:\n        Decorated function\n    \"\"\"\n    def decorator(f):\n        @wraps(f)",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "get_audit_logs",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def get_audit_logs(\n    start_date: Optional[datetime] = None,\n    end_date: Optional[datetime] = None,\n    user_id: Optional[str] = None,\n    action: Optional[str] = None,\n    limit: int = 100\n) -> list:\n    \"\"\"\n    Query audit logs.\n    Args:",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_activity",
+        "kind": 2,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "def get_user_activity(user_id: str, limit: int = 50) -> list:\n    \"\"\"\n    Get activity logs for a specific user.\n    Args:\n        user_id: User ID\n        limit: Maximum number of logs to return\n    Returns:\n        List of user activity logs\n    \"\"\"\n    return get_audit_logs(user_id=user_id, limit=limit)",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "audit_logger",
+        "kind": 5,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "audit_logger = None\n# Audit action types\nclass AuditAction:\n    # Authentication actions\n    LOGIN = \"LOGIN\"\n    LOGOUT = \"LOGOUT\"\n    LOGIN_FAILED = \"LOGIN_FAILED\"\n    PASSWORD_CHANGE = \"PASSWORD_CHANGE\"\n    # User actions\n    USER_CREATE = \"USER_CREATE\"",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "__all__",
+        "kind": 5,
+        "importPath": "audit_logger",
+        "description": "audit_logger",
+        "peekOfCode": "__all__ = [\n    'init_audit_logger',\n    'get_audit_logger',\n    'AuditAction',\n    'log_audit',\n    'log_api_request',\n    'log_user_action',\n    'log_error',\n    'audit_log',\n    'get_audit_logs',",
+        "detail": "audit_logger",
+        "documentation": {}
+    },
+    {
+        "label": "TINEError",
+        "kind": 6,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "class TINEError(Exception):\n    \"\"\"Base exception for all TINE API errors\"\"\"\n    def __init__(self, message: str, code: str = \"INTERNAL_ERROR\", status_code: int = 500):\n        self.message = message\n        self.code = code\n        self.status_code = status_code\n        super().__init__(self.message)\nclass AuthenticationError(TINEError):\n    \"\"\"Exception for authentication failures\"\"\"\n    def __init__(self, message: str = \"Authentication failed\", code: str = \"AUTH_ERROR\"):",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "AuthenticationError",
+        "kind": 6,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "class AuthenticationError(TINEError):\n    \"\"\"Exception for authentication failures\"\"\"\n    def __init__(self, message: str = \"Authentication failed\", code: str = \"AUTH_ERROR\"):\n        super().__init__(message, code, 401)\nclass AuthorizationError(TINEError):\n    \"\"\"Exception for authorization failures\"\"\"\n    def __init__(self, message: str = \"Access denied\", code: str = \"FORBIDDEN\"):\n        super().__init__(message, code, 403)\nclass ValidationError(TINEError):\n    \"\"\"Exception for validation errors\"\"\"",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "AuthorizationError",
+        "kind": 6,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "class AuthorizationError(TINEError):\n    \"\"\"Exception for authorization failures\"\"\"\n    def __init__(self, message: str = \"Access denied\", code: str = \"FORBIDDEN\"):\n        super().__init__(message, code, 403)\nclass ValidationError(TINEError):\n    \"\"\"Exception for validation errors\"\"\"\n    def __init__(self, message: str = \"Validation failed\", code: str = \"VALIDATION_ERROR\", errors: dict = None):\n        super().__init__(message, code, 400)\n        self.errors = errors or {}\nclass RateLimitError(TINEError):",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "ValidationError",
+        "kind": 6,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "class ValidationError(TINEError):\n    \"\"\"Exception for validation errors\"\"\"\n    def __init__(self, message: str = \"Validation failed\", code: str = \"VALIDATION_ERROR\", errors: dict = None):\n        super().__init__(message, code, 400)\n        self.errors = errors or {}\nclass RateLimitError(TINEError):\n    \"\"\"Exception for rate limit exceeded\"\"\"\n    def __init__(self, message: str = \"Rate limit exceeded\", code: str = \"RATE_LIMIT_ERROR\"):\n        super().__init__(message, code, 429)\nclass ResourceNotFoundError(TINEError):",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "RateLimitError",
+        "kind": 6,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "class RateLimitError(TINEError):\n    \"\"\"Exception for rate limit exceeded\"\"\"\n    def __init__(self, message: str = \"Rate limit exceeded\", code: str = \"RATE_LIMIT_ERROR\"):\n        super().__init__(message, code, 429)\nclass ResourceNotFoundError(TINEError):\n    \"\"\"Exception for resource not found\"\"\"\n    def __init__(self, message: str = \"Resource not found\", code: str = \"NOT_FOUND\"):\n        super().__init__(message, code, 404)\nclass BadRequestError(TINEError):\n    \"\"\"Exception for bad requests\"\"\"",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "ResourceNotFoundError",
+        "kind": 6,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "class ResourceNotFoundError(TINEError):\n    \"\"\"Exception for resource not found\"\"\"\n    def __init__(self, message: str = \"Resource not found\", code: str = \"NOT_FOUND\"):\n        super().__init__(message, code, 404)\nclass BadRequestError(TINEError):\n    \"\"\"Exception for bad requests\"\"\"\n    def __init__(self, message: str = \"Bad request\", code: str = \"BAD_REQUEST\"):\n        super().__init__(message, code, 400)\nclass InternalServerError(TINEError):\n    \"\"\"Exception for internal server errors\"\"\"",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "BadRequestError",
+        "kind": 6,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "class BadRequestError(TINEError):\n    \"\"\"Exception for bad requests\"\"\"\n    def __init__(self, message: str = \"Bad request\", code: str = \"BAD_REQUEST\"):\n        super().__init__(message, code, 400)\nclass InternalServerError(TINEError):\n    \"\"\"Exception for internal server errors\"\"\"\n    def __init__(self, message: str = \"Internal server error\", code: str = \"INTERNAL_ERROR\"):\n        super().__init__(message, code, 500)\nclass ServiceUnavailableError(TINEError):\n    \"\"\"Exception for service unavailable\"\"\"",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "InternalServerError",
+        "kind": 6,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "class InternalServerError(TINEError):\n    \"\"\"Exception for internal server errors\"\"\"\n    def __init__(self, message: str = \"Internal server error\", code: str = \"INTERNAL_ERROR\"):\n        super().__init__(message, code, 500)\nclass ServiceUnavailableError(TINEError):\n    \"\"\"Exception for service unavailable\"\"\"\n    def __init__(self, message: str = \"Service unavailable\", code: str = \"SERVICE_UNAVAILABLE\"):\n        super().__init__(message, code, 503)\n# ============== Error Handler Setup ==============\ndef register_error_handlers(app: Flask) -> None:",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "ServiceUnavailableError",
+        "kind": 6,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "class ServiceUnavailableError(TINEError):\n    \"\"\"Exception for service unavailable\"\"\"\n    def __init__(self, message: str = \"Service unavailable\", code: str = \"SERVICE_UNAVAILABLE\"):\n        super().__init__(message, code, 503)\n# ============== Error Handler Setup ==============\ndef register_error_handlers(app: Flask) -> None:\n    \"\"\"\n    Register all error handlers with the Flask app.\n    Args:\n        app: Flask application instance",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "register_error_handlers",
+        "kind": 2,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "def register_error_handlers(app: Flask) -> None:\n    \"\"\"\n    Register all error handlers with the Flask app.\n    Args:\n        app: Flask application instance\n    \"\"\"\n    @app.errorhandler(TINEError)\n    def handle_tine_error(error):\n        \"\"\"Handle custom TINE errors\"\"\"\n        response = {",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "handle_errors",
+        "kind": 2,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "def handle_errors(f):\n    \"\"\"\n    Decorator to handle errors in route functions.\n    Returns structured JSON error responses.\n    \"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        try:\n            return f(*args, **kwargs)\n        except TINEError:",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "handle_validation_errors",
+        "kind": 2,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "def handle_validation_errors(errors: dict) -> None:\n    \"\"\"\n    Raise a ValidationError with the given errors.\n    Args:\n        errors: Dictionary of field errors\n    \"\"\"\n    if errors:\n        raise ValidationError(\n            message=\"Validation failed\",\n            errors=errors",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "error_response",
+        "kind": 2,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "def error_response(\n    message: str,\n    code: str,\n    status_code: int = 400,\n    details: dict = None\n) -> tuple:\n    \"\"\"\n    Create a standardized error response.\n    Args:\n        message: Error message",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "success_response",
+        "kind": 2,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "def success_response(\n    data: any = None,\n    message: str = \"Success\",\n    status_code: int = 200\n) -> tuple:\n    \"\"\"\n    Create a standardized success response.\n    Args:\n        data: Response data\n        message: Success message",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "__all__",
+        "kind": 5,
+        "importPath": "error_handlers",
+        "description": "error_handlers",
+        "peekOfCode": "__all__ = [\n    'TINEError',\n    'AuthenticationError',\n    'AuthorizationError',\n    'ValidationError',\n    'RateLimitError',\n    'ResourceNotFoundError',\n    'BadRequestError',\n    'InternalServerError',\n    'ServiceUnavailableError',",
+        "detail": "error_handlers",
+        "documentation": {}
+    },
+    {
+        "label": "verify_firebase_token",
+        "kind": 2,
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "peekOfCode": "def verify_firebase_token(id_token):\n    \"\"\"\n    Verify a Firebase ID token and return the user information.\n    Args:\n        id_token: The Firebase ID token to verify\n    Returns:\n        dict: User information if token is valid, None otherwise\n    \"\"\"\n    try:\n        # Verify the token using Firebase Identity Toolkit",
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_token_from_request",
+        "kind": 2,
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "peekOfCode": "def get_token_from_request():\n    \"\"\"\n    Extract the Firebase ID token from the request header.\n    Returns:\n        str: The ID token or None if not found\n    \"\"\"\n    auth_header = request.headers.get('Authorization')\n    if auth_header and auth_header.startswith('Bearer '):\n        return auth_header[7:]  # Remove 'Bearer ' prefix\n    return None",
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "require_auth",
+        "kind": 2,
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "peekOfCode": "def require_auth(f):\n    \"\"\"\n    Decorator to require Firebase authentication on Flask routes.\n    Usage:\n        @app.route('/protected')\n        @require_auth\n        def protected_route():\n            return jsonify({'message': 'Authenticated!'})\n    \"\"\"\n    @wraps(f)",
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "require_role",
+        "kind": 2,
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "peekOfCode": "def require_role(*allowed_roles):\n    \"\"\"\n    Decorator to require specific roles on Flask routes.\n    Usage:\n        @app.route('/admin')\n        @require_auth\n        @require_role('admin', 'superadmin')\n        def admin_route():\n            return jsonify({'message': 'Admin access granted!'})\n    \"\"\"",
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_user",
+        "kind": 2,
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "peekOfCode": "def get_current_user():\n    \"\"\"\n    Get the current authenticated user from the request.\n    Returns:\n        dict: User information or None if not authenticated\n    \"\"\"\n    return getattr(request, 'user', None)",
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "FIREBASE_PROJECT_ID",
+        "kind": 5,
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "peekOfCode": "FIREBASE_PROJECT_ID = os.environ.get('FIREBASE_PROJECT_ID', 'anomalydetection-18e91')\nFIREBASE_API_KEY = os.environ.get('FIREBASE_API_KEY', '')\n# Firebase token verification URL\nFIREBASE_VERIFY_URL = f\"https://identitytoolkit.googleapis.com/v1/accounts:lookup?key={FIREBASE_API_KEY}\"\ndef verify_firebase_token(id_token):\n    \"\"\"\n    Verify a Firebase ID token and return the user information.\n    Args:\n        id_token: The Firebase ID token to verify\n    Returns:",
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "FIREBASE_API_KEY",
+        "kind": 5,
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "peekOfCode": "FIREBASE_API_KEY = os.environ.get('FIREBASE_API_KEY', '')\n# Firebase token verification URL\nFIREBASE_VERIFY_URL = f\"https://identitytoolkit.googleapis.com/v1/accounts:lookup?key={FIREBASE_API_KEY}\"\ndef verify_firebase_token(id_token):\n    \"\"\"\n    Verify a Firebase ID token and return the user information.\n    Args:\n        id_token: The Firebase ID token to verify\n    Returns:\n        dict: User information if token is valid, None otherwise",
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "FIREBASE_VERIFY_URL",
+        "kind": 5,
+        "importPath": "firebase_auth",
+        "description": "firebase_auth",
+        "peekOfCode": "FIREBASE_VERIFY_URL = f\"https://identitytoolkit.googleapis.com/v1/accounts:lookup?key={FIREBASE_API_KEY}\"\ndef verify_firebase_token(id_token):\n    \"\"\"\n    Verify a Firebase ID token and return the user information.\n    Args:\n        id_token: The Firebase ID token to verify\n    Returns:\n        dict: User information if token is valid, None otherwise\n    \"\"\"\n    try:",
+        "detail": "firebase_auth",
+        "documentation": {}
+    },
+    {
+        "label": "init_rate_limiter",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def init_rate_limiter(app: Flask) -> Limiter:\n    \"\"\"\n    Initialize the rate limiter with Flask app.\n    Args:\n        app: Flask application instance\n    Returns:\n        Configured Limiter instance\n    \"\"\"\n    global limiter\n    limiter = Limiter(",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "get_limiter",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def get_limiter() -> Limiter:\n    \"\"\"\n    Get the rate limiter instance.\n    Returns:\n        Limiter instance\n    \"\"\"\n    return limiter\n# ============== Rate Limit Decorators ==============\ndef auth_rate_limit(f):\n    \"\"\"",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "auth_rate_limit",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def auth_rate_limit(f):\n    \"\"\"\n    Decorator for authentication endpoints.\n    Rate limit: 5 requests per minute\n    \"\"\"\n    if limiter:\n        return limiter.limit(\"5 per minute\")(f)\n    return f\ndef api_rate_limit(f):\n    \"\"\"",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "api_rate_limit",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def api_rate_limit(f):\n    \"\"\"\n    Decorator for general API endpoints.\n    Rate limit: 60 requests per minute\n    \"\"\"\n    if limiter:\n        return limiter.limit(\"60 per minute\")(f)\n    return f\ndef detection_rate_limit(f):\n    \"\"\"",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "detection_rate_limit",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def detection_rate_limit(f):\n    \"\"\"\n    Decorator for detection/anomaly endpoints.\n    Rate limit: 30 requests per minute\n    \"\"\"\n    if limiter:\n        return limiter.limit(\"30 per minute\")(f)\n    return f\ndef camera_stream_rate_limit(f):\n    \"\"\"",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "camera_stream_rate_limit",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def camera_stream_rate_limit(f):\n    \"\"\"\n    Decorator for camera streaming endpoints.\n    Rate limit: 10 requests per minute\n    \"\"\"\n    if limiter:\n        return limiter.limit(\"10 per minute\")(f)\n    return f\ndef sse_rate_limit(f):\n    \"\"\"",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "sse_rate_limit",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def sse_rate_limit(f):\n    \"\"\"\n    Decorator for SSE (Server-Sent Events) endpoints.\n    Rate limit: 5 connections per minute\n    \"\"\"\n    if limiter:\n        return limiter.limit(\"5 per minute\")(f)\n    return f\n# ============== Custom Rate Limit Functions ==============\ndef apply_rate_limit(limit: str):",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "apply_rate_limit",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def apply_rate_limit(limit: str):\n    \"\"\"\n    Apply a custom rate limit to an endpoint.\n    Args:\n        limit: Rate limit string (e.g., \"10 per minute\", \"100 per hour\")\n    Returns:\n        Decorator function\n    \"\"\"\n    if limiter:\n        return limiter.limit(limit)",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "check_rate_limit",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def check_rate_limit() -> bool:\n    \"\"\"\n    Check if current request exceeds rate limit.\n    Returns:\n        True if within limit, False if exceeded\n    \"\"\"\n    if limiter:\n        try:\n            # Get the current limit for this request\n            limiter.check()",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "get_rate_limit_status",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def get_rate_limit_status() -> dict:\n    \"\"\"\n    Get current rate limit status.\n    Returns:\n        Dictionary with rate limit information\n    \"\"\"\n    if limiter:\n        try:\n            from flask import request\n            # This will return limit info if available",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "exempt_from_rate_limit",
+        "kind": 2,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "def exempt_from_rate_limit(f):\n    \"\"\"\n    Decorator to exempt an endpoint from rate limiting.\n    \"\"\"\n    if limiter:\n        return limiter.exempt(f)\n    return f\n__all__ = [\n    'init_rate_limiter',\n    'get_limiter',",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "limiter",
+        "kind": 5,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "limiter = None\ndef init_rate_limiter(app: Flask) -> Limiter:\n    \"\"\"\n    Initialize the rate limiter with Flask app.\n    Args:\n        app: Flask application instance\n    Returns:\n        Configured Limiter instance\n    \"\"\"\n    global limiter",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "__all__",
+        "kind": 5,
+        "importPath": "rate_limit",
+        "description": "rate_limit",
+        "peekOfCode": "__all__ = [\n    'init_rate_limiter',\n    'get_limiter',\n    'auth_rate_limit',\n    'api_rate_limit',\n    'detection_rate_limit',\n    'camera_stream_rate_limit',\n    'sse_rate_limit',\n    'apply_rate_limit',\n    'check_rate_limit',",
+        "detail": "rate_limit",
+        "documentation": {}
+    },
+    {
+        "label": "SSEManager",
+        "kind": 6,
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "peekOfCode": "class SSEManager:\n    \"\"\"Server-Sent Events Manager for real-time client notifications\"\"\"\n    def __init__(self):\n        # Store queues for each client identifier\n        # key: client_id, value: { 'queue': Queue, 'event_types': set, 'org_id': str }\n        self._clients = {}\n        self._lock = threading.Lock()\n    def add_client(self, client_id, event_types, org_id=None):\n        \"\"\"Add a client with its subscribed event types and org_id\"\"\"\n        with self._lock:",
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "generate_sse_message",
+        "kind": 2,
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "peekOfCode": "def generate_sse_message(event_type, data, event_id=None):\n    \"\"\"Generate SSE formatted message\"\"\"\n    message = f\"event: {event_type}\\n\"\n    message += f\"data: {json.dumps(data)}\\n\"\n    if event_id:\n        message += f\"id: {event_id}\\n\"\n    message += \"\\n\"\n    return message\ndef create_sse_response(event_types, client_id, org_id=None):\n    \"\"\"",
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "create_sse_response",
+        "kind": 2,
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "peekOfCode": "def create_sse_response(event_types, client_id, org_id=None):\n    \"\"\"\n    Create a streaming SSE response for specified event types\n    \"\"\"\n    # Create or get queue for this client\n    client_queue = sse_manager.add_client(client_id, event_types, org_id)\n    def event_stream():\n        try:\n            # Send initial connection message\n            yield generate_sse_message('connected', {",
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "emit_alert",
+        "kind": 2,
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "peekOfCode": "def emit_alert(alert_data, org_id=None):\n    \"\"\"Emit an alert event to connected clients filtered by org_id\"\"\"\n    # If org_id not explicitly provided, try to get it from alert_data\n    target_org = org_id or alert_data.get('org_id')\n    return sse_manager.emit_event('alert', {\n        'type': 'alert',\n        'data': alert_data,\n        'timestamp': time.time()\n    }, org_id=target_org)\ndef emit_camera_status(camera_name, status, org_id=None):",
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "emit_camera_status",
+        "kind": 2,
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "peekOfCode": "def emit_camera_status(camera_name, status, org_id=None):\n    \"\"\"Emit a camera status update event\"\"\"\n    return sse_manager.emit_event('camera_status', {\n        'type': 'camera_status',\n        'camera_name': camera_name,\n        'status': status,\n        'timestamp': time.time()\n    }, org_id=org_id)\ndef emit_detection(camera_name, detection_type, confidence, org_id=None):\n    \"\"\"Emit a detection event when anomaly is detected\"\"\"",
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "emit_detection",
+        "kind": 2,
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "peekOfCode": "def emit_detection(camera_name, detection_type, confidence, org_id=None):\n    \"\"\"Emit a detection event when anomaly is detected\"\"\"\n    return sse_manager.emit_event('detection', {\n        'type': 'detection',\n        'camera_name': camera_name,\n        'detection_type': detection_type,\n        'confidence': confidence,\n        'timestamp': time.time()\n    }, org_id=org_id)\ndef emit_system_health(status):",
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "emit_system_health",
+        "kind": 2,
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "peekOfCode": "def emit_system_health(status):\n    \"\"\"Emit system health status\"\"\"\n    return sse_manager.emit_event('health', {\n        'type': 'health',\n        'status': status,\n        'subscriptions': sse_manager.get_all_subscriptions(),\n        'timestamp': time.time()\n    })",
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "sse_manager",
+        "kind": 5,
+        "importPath": "sse_manager",
+        "description": "sse_manager",
+        "peekOfCode": "sse_manager = SSEManager()\ndef generate_sse_message(event_type, data, event_id=None):\n    \"\"\"Generate SSE formatted message\"\"\"\n    message = f\"event: {event_type}\\n\"\n    message += f\"data: {json.dumps(data)}\\n\"\n    if event_id:\n        message += f\"id: {event_id}\\n\"\n    message += \"\\n\"\n    return message\ndef create_sse_response(event_types, client_id, org_id=None):",
+        "detail": "sse_manager",
+        "documentation": {}
+    },
+    {
+        "label": "ValidationError",
+        "kind": 6,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "class ValidationError(Exception):\n    \"\"\"Custom exception for validation errors\"\"\"\n    def __init__(self, message: str, field: str = None, code: str = \"VALIDATION_ERROR\"):\n        self.message = message\n        self.field = field\n        self.code = code\n        super().__init__(self.message)\n# ============== Email Validation ==============\ndef validate_email(email: str) -> Tuple[bool, str]:\n    \"\"\"",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_email",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_email(email: str) -> Tuple[bool, str]:\n    \"\"\"\n    Validate email format.\n    Args:\n        email: Email address to validate\n    Returns:\n        Tuple of (is_valid, error_message)\n    \"\"\"\n    if not email:\n        return False, \"Email is required\"",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_email_required",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_email_required(email: str) -> None:\n    \"\"\"Validate email and raise ValidationError if invalid\"\"\"\n    is_valid, error = validate_email(email)\n    if not is_valid:\n        raise ValidationError(error, \"email\")\n# ============== Password Validation ==============\ndef validate_password_strength(password: str) -> Tuple[bool, str]:\n    \"\"\"\n    Validate password strength requirements.\n    Requirements:",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_password_strength",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_password_strength(password: str) -> Tuple[bool, str]:\n    \"\"\"\n    Validate password strength requirements.\n    Requirements:\n    - At least 8 characters\n    - At least one uppercase letter\n    - At least one lowercase letter\n    - At least one number\n    - At least one special character\n    Args:",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_password_required",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_password_required(password: str) -> None:\n    \"\"\"Validate password and raise ValidationError if invalid\"\"\"\n    is_valid, error = validate_password_strength(password)\n    if not is_valid:\n        raise ValidationError(error, \"password\")\n# ============== Camera URL Validation ==============\ndef validate_camera_url(url: str) -> Tuple[bool, str]:\n    \"\"\"\n    Validate camera RTSP/RTSPS URL format.\n    Args:",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_camera_url",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_camera_url(url: str) -> Tuple[bool, str]:\n    \"\"\"\n    Validate camera RTSP/RTSPS URL format.\n    Args:\n        url: Camera URL to validate\n    Returns:\n        Tuple of (is_valid, error_message)\n    \"\"\"\n    if not url:\n        return False, \"Camera URL is required\"",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_camera_url_required",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_camera_url_required(url: str) -> None:\n    \"\"\"Validate camera URL and raise ValidationError if invalid\"\"\"\n    is_valid, error = validate_camera_url(url)\n    if not is_valid:\n        raise ValidationError(error, \"rtsp_url\")\n# ============== Date Range Validation ==============\ndef validate_date_range(start_date: Optional[str], end_date: Optional[str]) -> Tuple[bool, str]:\n    \"\"\"\n    Validate date range parameters.\n    Args:",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_date_range",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_date_range(start_date: Optional[str], end_date: Optional[str]) -> Tuple[bool, str]:\n    \"\"\"\n    Validate date range parameters.\n    Args:\n        start_date: Start date in ISO format\n        end_date: End date in ISO format\n    Returns:\n        Tuple of (is_valid, error_message)\n    \"\"\"\n    from datetime import datetime",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_date_range_required",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_date_range_required(start_date: Optional[str], end_date: Optional[str]) -> None:\n    \"\"\"Validate date range and raise ValidationError if invalid\"\"\"\n    is_valid, error = validate_date_range(start_date, end_date)\n    if not is_valid:\n        raise ValidationError(error, \"date_range\")\n# ============== Name Validation ==============\ndef validate_name(name: str, field_name: str = \"name\") -> Tuple[bool, str]:\n    \"\"\"\n    Validate name field.\n    Args:",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_name",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_name(name: str, field_name: str = \"name\") -> Tuple[bool, str]:\n    \"\"\"\n    Validate name field.\n    Args:\n        name: Name to validate\n        field_name: Field name for error messages\n    Returns:\n        Tuple of (is_valid, error_message)\n    \"\"\"\n    if not name:",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_organization_name",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_organization_name(name: str) -> Tuple[bool, str]:\n    \"\"\"\n    Validate organization name.\n    Args:\n        name: Organization name to validate\n    Returns:\n        Tuple of (is_valid, error_message)\n    \"\"\"\n    if not name:\n        return False, \"Organization name is required\"",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_camera_settings",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_camera_settings(data: Dict[str, Any]) -> Dict[str, List[str]]:\n    \"\"\"\n    Validate camera settings data.\n    Args:\n        data: Camera settings data dictionary\n    Returns:\n        Dictionary of field errors\n    \"\"\"\n    errors = {}\n    # Validate name",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_alert_filters",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_alert_filters(data: Dict[str, Any]) -> Dict[str, List[str]]:\n    \"\"\"\n    Validate alert filter parameters.\n    Args:\n        data: Filter parameters dictionary\n    Returns:\n        Dictionary of field errors\n    \"\"\"\n    errors = {}\n    # Validate date range",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_request",
+        "kind": 2,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "def validate_request(schema_validator):\n    \"\"\"\n    Decorator to validate request data against a schema validator.\n    Args:\n        schema_validator: Function that takes data and returns error dict\n    Returns:\n        Decorated function\n    \"\"\"\n    def decorator(f):\n        @wraps(f)",
+        "detail": "validators",
+        "documentation": {}
+    },
+    {
+        "label": "__all__",
+        "kind": 5,
+        "importPath": "validators",
+        "description": "validators",
+        "peekOfCode": "__all__ = [\n    'ValidationError',\n    'validate_email',\n    'validate_email_required',\n    'validate_password_strength',\n    'validate_password_required',\n    'validate_camera_url',\n    'validate_camera_url_required',\n    'validate_date_range',\n    'validate_date_range_required',",
+        "detail": "validators",
+        "documentation": {}
+    }
+]

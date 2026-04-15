@@ -1,0 +1,13 @@
+node_modules/ 
+vendor/ 
+.env 
+node_modules/ 
+vendor/ 
+.env 
+venv/ 
+*.mp4 
+*.avi 
+*.weights 
+*.h5 
+__pycache__/ 
+firebase_key.json

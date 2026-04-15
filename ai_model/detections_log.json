@@ -1,0 +1,162 @@
+[
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 02:15:52 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID32_20260325_141548.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 02:16:39 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID35_20260325_141635.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 02:17:03 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID37_20260325_141700.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 02:17:34 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID45_20260325_141730.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 02:27:02 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID1_20260325_142658.mp4",
+    "accuracy": 0.89,
+    "confidence": "98%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 02:41:40 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID1_20260325_144137.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 02:42:08 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID4_20260325_144205.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 02:42:35 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID22_20260325_144232.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 03:05:32 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID1_20260325_150528.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 03:05:56 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID2_20260325_150553.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 03:12:47 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID1_20260325_151244.mp4",
+    "accuracy": 0.89,
+    "confidence": "98%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 03:29:07 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID1_20260325_152903.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 03:36:34 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID1_20260325_153631.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 04:02:45 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID1_20260325_160242.mp4",
+    "accuracy": 0.89,
+    "confidence": "98%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 04:03:12 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID7_20260325_160309.mp4",
+    "accuracy": 0.89,
+    "confidence": "98%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 04:15:15 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID1_20260325_161511.mp4",
+    "accuracy": 0.89,
+    "confidence": "98%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 04:22:26 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID1_20260325_162222.mp4",
+    "accuracy": 0.89,
+    "confidence": "98%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 04:22:58 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID8_20260325_162254.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 04:45:46 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID19_20260325_164543.mp4",
+    "accuracy": 0.89,
+    "confidence": "99%"
+  },
+  {
+    "camera_name": "cam1",
+    "timestamp": "March 25, 2026 at 04:46:59 PM",
+    "type": "Anomaly: Stealing",
+    "video_url": "ai_model/detections/cam1_Anomaly_Stealing_ID31_20260325_164655.mp4",
+    "accuracy": 0.89,
+    "confidence": "98%"
+  }
+]
