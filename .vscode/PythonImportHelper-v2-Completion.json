@@ -1849,7 +1849,7 @@
         "kind": 5,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "validator = BehaviorValidator()\n#  INITIALIZATION\napp = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://bejewelled-cucurucho-944a9f.netlify.app\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize security modules if available",
+        "peekOfCode": "validator = BehaviorValidator()\n#  INITIALIZATION\napp = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://anomaly-detection-ennk.onrender.com\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize security modules if available",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1858,7 +1858,7 @@
         "kind": 5,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "app = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://bejewelled-cucurucho-944a9f.netlify.app\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize security modules if available\nif SECURITY_AVAILABLE:\n    try:",
+        "peekOfCode": "app = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://anomaly-detection-ennk.onrender.com\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize security modules if available\nif SECURITY_AVAILABLE:\n    try:",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -2038,7 +2038,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://bejewelled-cucurucho-944a9f.netlify.app\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize rate limiter\ninit_rate_limiter(app)\n# Initialize audit logger\ninit_audit_logger(app)",
+        "peekOfCode": "app = Flask(__name__)\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://anomaly-detection-ennk.onrender.com\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize rate limiter\ninit_rate_limiter(app)\n# Initialize audit logger\ninit_audit_logger(app)",
         "detail": "app",
         "documentation": {}
     },

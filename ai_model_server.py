@@ -163,7 +163,7 @@ validator = BehaviorValidator()
 app = Flask(__name__)
 # Explicitly allow CORS for the frontend origin
 CORS(app, resources={r"/*": {
-    "origins": ["https://bejewelled-cucurucho-944a9f.netlify.app", "*"],
+    "origins": ["https://anomaly-detection-ennk.onrender.com", "*"],
     "methods": ["GET", "POST", "OPTIONS", "DELETE"],
     "allow_headers": ["Content-Type", "Authorization", "Cache-Control"]
 }})

@@ -47,7 +47,7 @@ from sse_manager import create_sse_response, emit_alert, emit_camera_status, emi
 app = Flask(__name__)
 
 CORS(app, resources={r"/*": {
-    "origins": ["https://bejewelled-cucurucho-944a9f.netlify.app", "*"],
+    "origins": ["https://anomaly-detection-ennk.onrender.com", "*"],
     "methods": ["GET", "POST", "OPTIONS", "DELETE"],
     "allow_headers": ["Content-Type", "Authorization", "Cache-Control"]
 }})
