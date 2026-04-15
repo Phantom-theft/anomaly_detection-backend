@@ -177,10 +177,16 @@ if SECURITY_AVAILABLE:
     except Exception as e:
         print(f"[WARNING] Error initializing security modules: {e}")
 
+@app.after_request
+def add_header(response):
+    response.headers['ngrok-skip-browser-warning'] = 'true'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Cache-Control, ngrok-skip-browser-warning'
+    return response
 
 cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object
-@app.route("/add_youtube", methods=["POST"])
+@app.route("/add_youtube", methods=["POST", "OPTIONS"])
 def add_youtube():
+    if request.method == "OPTIONS": return "", 200
     data = request.get_json()
     user_id = data.get("userId")
     camera_name = data.get("cameraName")
@@ -240,8 +246,9 @@ def add_youtube():
     print(f"[INFO] YouTube Camera added: {camera_name}")
     return {"message": f"YouTube stream '{camera_name}' added successfully!"}, 200
 
-@app.route("/addCamera", methods=["POST"])
+@app.route("/addCamera", methods=["POST", "OPTIONS"])
 def add_camera():
+    if request.method == "OPTIONS": return "", 200
     data = request.get_json()
     user_id = data.get("userId")
     camera_name = data.get("cameraName")
@@ -1174,8 +1181,9 @@ def get_cameras():
     return {"cameras": cam_list}, 200
 
 
-@app.route('/delete_camera/<camera_name>', methods=['DELETE'])
+@app.route('/delete_camera/<camera_name>', methods=['DELETE', 'OPTIONS'])
 def delete_camera(camera_name):
+    if request.method == "OPTIONS": return "", 200
     # 1. Try to stop the stream if it's currently running in memory
     if camera_name in cameras_dict:
         try:

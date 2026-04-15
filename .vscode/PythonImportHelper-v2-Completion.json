@@ -1296,11 +1296,20 @@
         "documentation": {}
     },
     {
+        "label": "add_header",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def add_header(response):\n    response.headers['ngrok-skip-browser-warning'] = 'true'\n    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Cache-Control, ngrok-skip-browser-warning'\n    return response\ncameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200\n    data = request.get_json()\n    user_id = data.get(\"userId\")",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
         "label": "add_youtube",
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def add_youtube():\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    youtube_url = data.get(\"youtubeUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, youtube_url]):\n        return {\"error\": \"Missing data\"}, 400\n    # Check runtime duplicates in memory\n    if camera_name in cameras_dict:",
+        "peekOfCode": "def add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    youtube_url = data.get(\"youtubeUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, youtube_url]):\n        return {\"error\": \"Missing data\"}, 400\n    # Check runtime duplicates in memory",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1309,7 +1318,7 @@
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def add_camera():\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    rtsp_url = data.get(\"rtspUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, rtsp_url]):\n        return {\"error\": \"Missing data\"}, 400\n    # Check runtime duplicates in memory\n    if camera_name in cameras_dict:",
+        "peekOfCode": "def add_camera():\n    if request.method == \"OPTIONS\": return \"\", 200\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    rtsp_url = data.get(\"rtspUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, rtsp_url]):\n        return {\"error\": \"Missing data\"}, 400\n    # Check runtime duplicates in memory",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1444,7 +1453,7 @@
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def delete_camera(camera_name):\n    # 1. Try to stop the stream if it's currently running in memory\n    if camera_name in cameras_dict:\n        try:\n            cam = cameras_dict[camera_name]\n            if hasattr(cam, 'stop'):\n                cam.stop()\n            elif hasattr(cam, 'stopped'):\n                cam.stopped = True\n            del cameras_dict[camera_name]",
+        "peekOfCode": "def delete_camera(camera_name):\n    if request.method == \"OPTIONS\": return \"\", 200\n    # 1. Try to stop the stream if it's currently running in memory\n    if camera_name in cameras_dict:\n        try:\n            cam = cameras_dict[camera_name]\n            if hasattr(cam, 'stop'):\n                cam.stop()\n            elif hasattr(cam, 'stopped'):\n                cam.stopped = True",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1867,7 +1876,7 @@
         "kind": 5,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\"])\ndef add_youtube():\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    youtube_url = data.get(\"youtubeUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, youtube_url]):\n        return {\"error\": \"Missing data\"}, 400",
+        "peekOfCode": "cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    youtube_url = data.get(\"youtubeUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, youtube_url]):",
         "detail": "ai_model_server",
         "documentation": {}
     },
