@@ -1462,7 +1462,7 @@
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def video_feed(camera_name):\n    return Response(gen_frames(camera_name), mimetype='multipart/x-mixed-replace; boundary=frame')\n@app.route('/stream', strict_slashes=False)\n@exempt_from_rate_limit\ndef stream():\n    if request.method == 'OPTIONS':\n        return '', 200\n    \"\"\"\n    SSE stream endpoint. If sse_manager is available, it uses the proper\n    SSE response creator to allow for persistent real-time updates.",
+        "peekOfCode": "def video_feed(camera_name):\n    return Response(gen_frames(camera_name), mimetype='multipart/x-mixed-replace; boundary=frame')\n@app.route('/stream', methods=['GET', 'OPTIONS'], strict_slashes=False)\n@exempt_from_rate_limit\ndef stream():\n    if request.method == 'OPTIONS':\n        return '', 200\n    \"\"\"\n    SSE stream endpoint. If sse_manager is available, it uses the proper\n    SSE response creator to allow for persistent real-time updates.",
         "detail": "ai_model_server",
         "documentation": {}
     },

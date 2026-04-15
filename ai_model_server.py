@@ -1225,7 +1225,7 @@ def delete_camera(camera_name):
 def video_feed(camera_name):
     return Response(gen_frames(camera_name), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/stream', strict_slashes=False)
+@app.route('/stream', methods=['GET', 'OPTIONS'], strict_slashes=False)
 @exempt_from_rate_limit
 def stream():
     if request.method == 'OPTIONS':
