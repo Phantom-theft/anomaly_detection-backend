@@ -1318,7 +1318,7 @@
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def add_header(response):\n    response.headers['ngrok-skip-browser-warning'] = 'true'\n    response.headers['Access-Control-Allow-Origin'] = '*'\n    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, DELETE'\n    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Cache-Control, ngrok-skip-browser-warning'\n    return response\ncameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200",
+        "peekOfCode": "def add_header(response):\n    \"\"\"Tell ngrok and the browser this is a safe, authorized request\"\"\"\n    response.headers['ngrok-skip-browser-warning'] = 'true'\n    # We remove the manual Access-Control lines because flask-cors (initialized at the top) \n    # handles them more safely for mobile browsers.\n    return response\ncameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200",
         "detail": "ai_model_server",
         "documentation": {}
     },

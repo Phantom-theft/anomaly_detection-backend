@@ -187,10 +187,10 @@ if SECURITY_AVAILABLE:
 
 @app.after_request
 def add_header(response):
+    """Tell ngrok and the browser this is a safe, authorized request"""
     response.headers['ngrok-skip-browser-warning'] = 'true'
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, DELETE'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Cache-Control, ngrok-skip-browser-warning'
+    # We remove the manual Access-Control lines because flask-cors (initialized at the top) 
+    # handles them more safely for mobile browsers.
     return response
 
 cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object
