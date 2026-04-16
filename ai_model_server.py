@@ -165,8 +165,16 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {
     "origins": ["https://anomaly-detection-ennk.onrender.com", "*"],
     "methods": ["GET", "POST", "OPTIONS", "DELETE"],
-    "allow_headers": ["Content-Type", "Authorization", "Cache-Control"]
+    "allow_headers": ["Content-Type", "Authorization", "Cache-Control", "ngrok-skip-browser-warning"]
 }})
+
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"status": "online", "message": "TINE AI Model Server is running!"}), 200
+
+@app.route("/health", methods=["GET"])
+def health_check():
+    return jsonify({"status": "healthy"}), 200
 # Initialize security modules if available
 if SECURITY_AVAILABLE:
     try:
@@ -180,6 +188,8 @@ if SECURITY_AVAILABLE:
 @app.after_request
 def add_header(response):
     response.headers['ngrok-skip-browser-warning'] = 'true'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, DELETE'
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Cache-Control, ngrok-skip-browser-warning'
     return response
 
@@ -249,9 +259,12 @@ def add_youtube():
 @app.route("/addCamera", methods=["POST", "OPTIONS"])
 def add_camera():
     if request.method == "OPTIONS": return "", 200
+    
+    # DEBUG LOG
+    print(f"[DEBUG] Add Camera request received from: {request.remote_addr}")
+    
     data = request.get_json()
-    user_id = data.get("userId")
-    camera_name = data.get("cameraName")
+    print(f"[DEBUG] Data received: {data}")
     rtsp_url = data.get("rtspUrl")
     org_id = data.get("org_id") # Get org_id from frontend
 
@@ -1135,7 +1148,8 @@ def gen_frames(camera_name):
 
 #  FLASK ROUTES
 
-@app.route('/cameras', methods=['GET', 'OPTIONS']) # Dagdagan ng OPTIONS
+@app.route('/cameras', methods=['GET', 'OPTIONS'])
+@app.route('/getCameras', methods=['GET', 'OPTIONS']) # Alias for compatibility
 def get_cameras():
     if request.method == 'OPTIONS': return '', 200
     # ... rest of your code

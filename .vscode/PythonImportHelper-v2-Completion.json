@@ -1296,11 +1296,29 @@
         "documentation": {}
     },
     {
+        "label": "home",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def home():\n    return jsonify({\"status\": \"online\", \"message\": \"TINE AI Model Server is running!\"}), 200\n@app.route(\"/health\", methods=[\"GET\"])\ndef health_check():\n    return jsonify({\"status\": \"healthy\"}), 200\n# Initialize security modules if available\nif SECURITY_AVAILABLE:\n    try:\n        init_rate_limiter(app)\n        init_audit_logger(app)",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "health_check",
+        "kind": 2,
+        "importPath": "ai_model_server",
+        "description": "ai_model_server",
+        "peekOfCode": "def health_check():\n    return jsonify({\"status\": \"healthy\"}), 200\n# Initialize security modules if available\nif SECURITY_AVAILABLE:\n    try:\n        init_rate_limiter(app)\n        init_audit_logger(app)\n        register_error_handlers(app)\n        print(\"[OK] Security modules initialized\")\n    except Exception as e:",
+        "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
         "label": "add_header",
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def add_header(response):\n    response.headers['ngrok-skip-browser-warning'] = 'true'\n    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Cache-Control, ngrok-skip-browser-warning'\n    return response\ncameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200\n    data = request.get_json()\n    user_id = data.get(\"userId\")",
+        "peekOfCode": "def add_header(response):\n    response.headers['ngrok-skip-browser-warning'] = 'true'\n    response.headers['Access-Control-Allow-Origin'] = '*'\n    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, DELETE'\n    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Cache-Control, ngrok-skip-browser-warning'\n    return response\ncameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1318,7 +1336,7 @@
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def add_camera():\n    if request.method == \"OPTIONS\": return \"\", 200\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    rtsp_url = data.get(\"rtspUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, rtsp_url]):\n        return {\"error\": \"Missing data\"}, 400\n    # Check runtime duplicates in memory",
+        "peekOfCode": "def add_camera():\n    if request.method == \"OPTIONS\": return \"\", 200\n    # DEBUG LOG\n    print(f\"[DEBUG] Add Camera request received from: {request.remote_addr}\")\n    data = request.get_json()\n    print(f\"[DEBUG] Data received: {data}\")\n    rtsp_url = data.get(\"rtspUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, rtsp_url]):\n        return {\"error\": \"Missing data\"}, 400",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1858,7 +1876,7 @@
         "kind": 5,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "validator = BehaviorValidator()\n#  INITIALIZATION\napp = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://anomaly-detection-ennk.onrender.com\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize security modules if available",
+        "peekOfCode": "validator = BehaviorValidator()\n#  INITIALIZATION\napp = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://anomaly-detection-ennk.onrender.com\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\", \"ngrok-skip-browser-warning\"]\n}})\n@app.route(\"/\", methods=[\"GET\"])",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1867,7 +1885,7 @@
         "kind": 5,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "app = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://anomaly-detection-ennk.onrender.com\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize security modules if available\nif SECURITY_AVAILABLE:\n    try:",
+        "peekOfCode": "app = Flask(__name__)\n# Explicitly allow CORS for the frontend origin\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://anomaly-detection-ennk.onrender.com\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\", \"ngrok-skip-browser-warning\"]\n}})\n@app.route(\"/\", methods=[\"GET\"])\ndef home():\n    return jsonify({\"status\": \"online\", \"message\": \"TINE AI Model Server is running!\"}), 200",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1932,6 +1950,24 @@
         "description": "ai_model_server",
         "peekOfCode": "RETENTION_DAYS = 14\ndef enforce_retention_policy(org_id):\n    \"\"\"Checks the org folder and moves folders older than 14 days to the Bin.\"\"\"\n    org_path = os.path.join(SD_CARD_PATH, org_id)\n    bin_org_path = os.path.join(BIN_PATH, org_id)\n    if not os.path.exists(org_path):\n        return\n    now = datetime.now()\n    for camera_name in os.listdir(org_path):\n        cam_path = os.path.join(org_path, camera_name)",
         "detail": "ai_model_server",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def home():\n    \"\"\"Root endpoint to verify backend is online\"\"\"\n    return jsonify({\n        \"status\": \"online\",\n        \"message\": \"TINE Backend is running!\",\n        \"version\": \"1.0.0\"\n    }), 200\n@app.route(\"/health\", methods=[\"GET\"])\n@exempt_from_rate_limit\ndef health_check():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "health_check",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def health_check():\n    \"\"\"\n    Health check endpoint - no authentication required.\n    Rate limited: exempt\n    \"\"\"\n    return jsonify({\"status\": \"healthy\", \"service\": \"tine-backend\"}), 200\n# Initialize rate limiter\ninit_rate_limiter(app)\n# Initialize audit logger\ninit_audit_logger(app)",
+        "detail": "app",
         "documentation": {}
     },
     {
@@ -2047,7 +2083,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://anomaly-detection-ennk.onrender.com\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# Initialize rate limiter\ninit_rate_limiter(app)\n# Initialize audit logger\ninit_audit_logger(app)",
+        "peekOfCode": "app = Flask(__name__)\nCORS(app, resources={r\"/*\": {\n    \"origins\": [\"https://anomaly-detection-ennk.onrender.com\", \"*\"],\n    \"methods\": [\"GET\", \"POST\", \"OPTIONS\", \"DELETE\"],\n    \"allow_headers\": [\"Content-Type\", \"Authorization\", \"Cache-Control\"]\n}})\n# ============== Essential Endpoints ==============\n@app.route(\"/\", methods=[\"GET\"])\n@exempt_from_rate_limit\ndef home():",
         "detail": "app",
         "documentation": {}
     },

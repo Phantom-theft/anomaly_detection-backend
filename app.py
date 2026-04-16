@@ -51,6 +51,28 @@ CORS(app, resources={r"/*": {
     "methods": ["GET", "POST", "OPTIONS", "DELETE"],
     "allow_headers": ["Content-Type", "Authorization", "Cache-Control"]
 }})
+
+# ============== Essential Endpoints ==============
+
+@app.route("/", methods=["GET"])
+@exempt_from_rate_limit
+def home():
+    """Root endpoint to verify backend is online"""
+    return jsonify({
+        "status": "online",
+        "message": "TINE Backend is running!",
+        "version": "1.0.0"
+    }), 200
+
+@app.route("/health", methods=["GET"])
+@exempt_from_rate_limit
+def health_check():
+    """
+    Health check endpoint - no authentication required.
+    Rate limited: exempt
+    """
+    return jsonify({"status": "healthy", "service": "tine-backend"}), 200
+
 # Initialize rate limiter
 init_rate_limiter(app)
 
