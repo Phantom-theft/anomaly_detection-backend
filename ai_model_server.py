@@ -197,11 +197,17 @@ cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object
 @app.route("/add_youtube", methods=["POST", "OPTIONS"])
 def add_youtube():
     if request.method == "OPTIONS": return "", 200
+
+    # DEBUG LOGS FOR PHONE
+    print(f"[DEBUG] YouTube Request from: {request.remote_addr}")
     data = request.get_json()
+    print(f"[DEBUG] YouTube Data: {data}")
+
     user_id = data.get("userId")
     camera_name = data.get("cameraName")
     youtube_url = data.get("youtubeUrl")
-    org_id = data.get("org_id") # Get org_id from frontend
+    org_id = data.get("org_id")
+ # Get org_id from frontend
 
     if not all([user_id, camera_name, youtube_url]):
         return {"error": "Missing data"}, 400

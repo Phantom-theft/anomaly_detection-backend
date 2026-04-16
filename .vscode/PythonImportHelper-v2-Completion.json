@@ -1327,7 +1327,7 @@
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    youtube_url = data.get(\"youtubeUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, youtube_url]):\n        return {\"error\": \"Missing data\"}, 400\n    # Check runtime duplicates in memory",
+        "peekOfCode": "def add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200\n    # DEBUG LOGS FOR PHONE\n    print(f\"[DEBUG] YouTube Request from: {request.remote_addr}\")\n    data = request.get_json()\n    print(f\"[DEBUG] YouTube Data: {data}\")\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    youtube_url = data.get(\"youtubeUrl\")\n    org_id = data.get(\"org_id\")",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1894,7 +1894,7 @@
         "kind": 5,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200\n    data = request.get_json()\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    youtube_url = data.get(\"youtubeUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, youtube_url]):",
+        "peekOfCode": "cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200\n    # DEBUG LOGS FOR PHONE\n    print(f\"[DEBUG] YouTube Request from: {request.remote_addr}\")\n    data = request.get_json()\n    print(f\"[DEBUG] YouTube Data: {data}\")\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")",
         "detail": "ai_model_server",
         "documentation": {}
     },
