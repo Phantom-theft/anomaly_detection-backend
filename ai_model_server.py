@@ -187,10 +187,11 @@ if SECURITY_AVAILABLE:
 
 @app.after_request
 def add_header(response):
-    """Tell ngrok and the browser this is a safe, authorized request"""
+    """Force CORS and ngrok headers on every response for total mobile compatibility"""
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, DELETE, PUT'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Cache-Control, ngrok-skip-browser-warning, X-Requested-With'
     response.headers['ngrok-skip-browser-warning'] = 'true'
-    # We remove the manual Access-Control lines because flask-cors (initialized at the top) 
-    # handles them more safely for mobile browsers.
     return response
 
 cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object
@@ -1006,8 +1007,23 @@ def gen_frames(camera_name):
     
     while True:
         ret, frame = camera.read()
+        
+        # If stream is lost, create a status frame instead of skipping
         if not ret or frame is None:
-            time.sleep(0.05); continue
+            # Create a black frame (640x480) with status text
+            status_frame = np.zeros((480, 640, 3), dtype=np.uint8)
+            cv2.putText(status_frame, f"Connecting to {camera_name}...", (50, 240), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+            cv2.putText(status_frame, "Please wait, the AI is reconnecting", (50, 280), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (200, 200, 200), 1)
+            
+            ret_enc, buffer = cv2.imencode('.jpg', status_frame)
+            if ret_enc:
+                yield (b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
+            
+            time.sleep(1.0) # Wait a bit before trying again
+            continue
+            
         if frame is last_processed_frame:
             time.sleep(0.01); continue
         last_processed_frame = frame
@@ -1243,7 +1259,9 @@ def delete_camera(camera_name):
         return {"error": f"Database error: {str(e)}"}, 500
 @app.route('/video/<camera_name>')
 def video_feed(camera_name):
-    return Response(gen_frames(camera_name), mimetype='multipart/x-mixed-replace; boundary=frame')
+    resp = Response(gen_frames(camera_name), mimetype='multipart/x-mixed-replace; boundary=frame')
+    resp.headers['ngrok-skip-browser-warning'] = 'true'
+    return resp
 
 @app.route('/stream', methods=['GET', 'OPTIONS'], strict_slashes=False)
 @exempt_from_rate_limit
@@ -1263,14 +1281,13 @@ def stream():
             org_id = request.args.get('org_id')
             
             response = create_sse_response(event_types, client_id, org_id)
-            
 
+            # FORCE CORS FOR SSE - MUST BE ON THE RESPONSE OBJECT
             response.headers['Access-Control-Allow-Origin'] = '*'
-            response.headers['Access-Control-Allow-Headers'] = 'Cache-Control, Content-Type, Authorization'
-            # Explicitly force the MIME type to prevent browser abortion
+            response.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+            response.headers['Access-Control-Allow-Headers'] = 'Cache-Control, Content-Type, Authorization, ngrok-skip-browser-warning'
+            response.headers['ngrok-skip-browser-warning'] = 'true'
             response.headers['Content-Type'] = 'text/event-stream'
-            response.headers['Cache-Control'] = 'no-cache'
-            response.headers['X-Accel-Buffering'] = 'no'
             return response
         except Exception as e:
             print(f"[SSE] Error creating SSE response: {e}")

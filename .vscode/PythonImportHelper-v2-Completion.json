@@ -1318,7 +1318,7 @@
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def add_header(response):\n    \"\"\"Tell ngrok and the browser this is a safe, authorized request\"\"\"\n    response.headers['ngrok-skip-browser-warning'] = 'true'\n    # We remove the manual Access-Control lines because flask-cors (initialized at the top) \n    # handles them more safely for mobile browsers.\n    return response\ncameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():\n    if request.method == \"OPTIONS\": return \"\", 200",
+        "peekOfCode": "def add_header(response):\n    \"\"\"Force CORS and ngrok headers on every response for total mobile compatibility\"\"\"\n    response.headers['Access-Control-Allow-Origin'] = '*'\n    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, DELETE, PUT'\n    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Cache-Control, ngrok-skip-browser-warning, X-Requested-With'\n    response.headers['ngrok-skip-browser-warning'] = 'true'\n    return response\ncameras_dict = {}  # key = camera_name, value = RTSPVideoStream object\n@app.route(\"/add_youtube\", methods=[\"POST\", \"OPTIONS\"])\ndef add_youtube():",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1480,7 +1480,7 @@
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def video_feed(camera_name):\n    return Response(gen_frames(camera_name), mimetype='multipart/x-mixed-replace; boundary=frame')\n@app.route('/stream', methods=['GET', 'OPTIONS'], strict_slashes=False)\n@exempt_from_rate_limit\ndef stream():\n    if request.method == 'OPTIONS':\n        return '', 200\n    \"\"\"\n    SSE stream endpoint. If sse_manager is available, it uses the proper\n    SSE response creator to allow for persistent real-time updates.",
+        "peekOfCode": "def video_feed(camera_name):\n    resp = Response(gen_frames(camera_name), mimetype='multipart/x-mixed-replace; boundary=frame')\n    resp.headers['ngrok-skip-browser-warning'] = 'true'\n    return resp\n@app.route('/stream', methods=['GET', 'OPTIONS'], strict_slashes=False)\n@exempt_from_rate_limit\ndef stream():\n    if request.method == 'OPTIONS':\n        return '', 200\n    \"\"\"",
         "detail": "ai_model_server",
         "documentation": {}
     },
