@@ -135,7 +135,7 @@ DETECTION_LOITER_H    = 0.35
 class BehaviorValidator:
     def __init__(self):
         self.alert_counters = {} 
-        self.MIN_FRAMES_STEAL = 3
+        self.MIN_FRAMES_STEAL = 15
         self.MIN_FRAMES_SUSP = 5
 
     def get_temporal_validation(self, track_id, current_label):
@@ -272,6 +272,8 @@ def add_camera():
     
     data = request.get_json()
     print(f"[DEBUG] Data received: {data}")
+    user_id = data.get("userId")
+    camera_name = data.get("cameraName")
     rtsp_url = data.get("rtspUrl")
     org_id = data.get("org_id") # Get org_id from frontend
 
@@ -1093,9 +1095,9 @@ def gen_frames(camera_name):
                 # Check Behaviors
                 if person['stationary_counter'] > STILLNESS_LIMIT:
                     raw_label, color, acc = "Loitering (Still)", (0, 255, 255), 90
-                elif person['last_steal_prob'] > STEAL_THRESH:
+                elif person['last_steal_prob'] > STEAL_THRESH and is_hand_in_stashing_zone(kpts_flat, height):
                     raw_label, color = "Anomaly: Stealing", (128, 0, 128)
-                    acc = min(int(50 + ((person['last_steal_prob'] - STEAL_THRESH) / (1.0 - STEAL_THRESH)) * 49) + (15 if is_hand_in_stashing_zone(kpts_flat, height) else 0), 99)
+                    acc = min(int(50 + ((person['last_steal_prob'] - STEAL_THRESH) / (1.0 - STEAL_THRESH)) * 49) + 15, 99)
                 elif len(person['loc_hist']) >= (HISTORY_LEN // 2):
                     xs, ys = [p[0] for p in person['loc_hist']], [p[1] for p in person['loc_hist']]
                     total_path = sum(np.hypot(xs[i]-xs[i-1], ys[i]-ys[i-1]) for i in range(1, len(xs)))

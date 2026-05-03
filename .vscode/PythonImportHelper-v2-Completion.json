@@ -1273,7 +1273,7 @@
         "kind": 6,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "class BehaviorValidator:\n    def __init__(self):\n        self.alert_counters = {} \n        self.MIN_FRAMES_STEAL = 3\n        self.MIN_FRAMES_SUSP = 5\n    def get_temporal_validation(self, track_id, current_label):\n        if track_id not in self.alert_counters:\n            self.alert_counters[track_id] = {\"label\": \"Normal\", \"count\": 0}\n        counter = self.alert_counters[track_id]\n        if current_label == counter[\"label\"]:",
+        "peekOfCode": "class BehaviorValidator:\n    def __init__(self):\n        self.alert_counters = {} \n        self.MIN_FRAMES_STEAL = 15\n        self.MIN_FRAMES_SUSP = 5\n    def get_temporal_validation(self, track_id, current_label):\n        if track_id not in self.alert_counters:\n            self.alert_counters[track_id] = {\"label\": \"Normal\", \"count\": 0}\n        counter = self.alert_counters[track_id]\n        if current_label == counter[\"label\"]:",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1336,7 +1336,7 @@
         "kind": 2,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "def add_camera():\n    if request.method == \"OPTIONS\": return \"\", 200\n    # DEBUG LOG\n    print(f\"[DEBUG] Add Camera request received from: {request.remote_addr}\")\n    data = request.get_json()\n    print(f\"[DEBUG] Data received: {data}\")\n    rtsp_url = data.get(\"rtspUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend\n    if not all([user_id, camera_name, rtsp_url]):\n        return {\"error\": \"Missing data\"}, 400",
+        "peekOfCode": "def add_camera():\n    if request.method == \"OPTIONS\": return \"\", 200\n    # DEBUG LOG\n    print(f\"[DEBUG] Add Camera request received from: {request.remote_addr}\")\n    data = request.get_json()\n    print(f\"[DEBUG] Data received: {data}\")\n    user_id = data.get(\"userId\")\n    camera_name = data.get(\"cameraName\")\n    rtsp_url = data.get(\"rtspUrl\")\n    org_id = data.get(\"org_id\") # Get org_id from frontend",
         "detail": "ai_model_server",
         "documentation": {}
     },
@@ -1867,7 +1867,7 @@
         "kind": 5,
         "importPath": "ai_model_server",
         "description": "ai_model_server",
-        "peekOfCode": "DETECTION_PACING_MULT = 1.0\nDETECTION_LOITER_W    = 0.35\nDETECTION_LOITER_H    = 0.35\n#  PRECISION LOGIC HELPERS\nclass BehaviorValidator:\n    def __init__(self):\n        self.alert_counters = {} \n        self.MIN_FRAMES_STEAL = 3\n        self.MIN_FRAMES_SUSP = 5\n    def get_temporal_validation(self, track_id, current_label):",
+        "peekOfCode": "DETECTION_PACING_MULT = 1.0\nDETECTION_LOITER_W    = 0.35\nDETECTION_LOITER_H    = 0.35\n#  PRECISION LOGIC HELPERS\nclass BehaviorValidator:\n    def __init__(self):\n        self.alert_counters = {} \n        self.MIN_FRAMES_STEAL = 15\n        self.MIN_FRAMES_SUSP = 5\n    def get_temporal_validation(self, track_id, current_label):",
         "detail": "ai_model_server",
         "documentation": {}
     },
