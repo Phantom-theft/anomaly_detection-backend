@@ -108,6 +108,7 @@ SCAN_WINDOW_SEC = 4
 SCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE
 
 LOGIC_SKIP = 2 
+YOLO_SKIP = 3 
 
 ALERT_MAX_DURATION = 10.0           
 ROUTINE_COOLDOWN = 20.
@@ -432,11 +433,15 @@ class RTSPVideoStream:
         # Start with a dummy state to allow frontend to request the feed
         self.ret = False
         self.frame = None
+        self.lock = threading.Lock()   # ← ADD THIS LINE
         self.stopped = False
         self.online = True # Assume online if we got this far with a URL
         
         # Initialize capture
         print(f"[INFO] Initializing stream for {self.name}...")
+        if "/Channels/101" in self.src:
+            self.src = self.src.replace("/Channels/101", "/Channels/102")
+            print(f"[PERF] Auto-switched to sub-stream for {self.name}")
         self.cap = cv2.VideoCapture(self.src, cv2.CAP_FFMPEG)
         
         # --- NEW: Get video FPS to pace the playback ---
@@ -478,9 +483,10 @@ class RTSPVideoStream:
             if self.cap is not None and self.cap.isOpened():
                 ret, frame = self.cap.read()
                 if ret:
-                    self.ret = True
-                    self.frame = frame
-                    self.online = True
+                    with self.lock: 
+                        self.ret = True
+                        self.frame = frame
+                        self.online = True
                     error_count = 0
                     frame_count += 1
                     if frame_count % 100 == 0:
@@ -512,10 +518,10 @@ class RTSPVideoStream:
                     print(f"✅ Camera {self.name} connected!")
 
     def read(self):
-        if not self.cap.isOpened():
-            self.online = False
-            return False, None
-        return self.ret, self.frame
+        with self.lock:
+            if self.frame is None:
+                return False, None
+            return self.ret, self.frame.copy()
 # --- Load cameras from Firestore ---
 
 
@@ -1043,9 +1049,13 @@ def gen_frames(camera_name):
         frame = cv2.resize(frame, (target_w, target_h))
         height, width = frame.shape[:2]
         
-        results = yolo_model.track(frame, persist=True, verbose=False, classes=[0], conf=0.45)
+        run_yolo = (frame_count % YOLO_SKIP == 0)
         active_ids_this_frame = []
-    
+        if run_yolo:
+            results = yolo_model.track(frame, persist=True, verbose=False, classes=[0], conf=0.45)
+        else:
+            results = None
+
         if results and results[0].boxes.id is not None:
             boxes = results[0].boxes.xyxy.cpu().numpy()
             track_ids = results[0].boxes.id.int().cpu().tolist()
@@ -1166,7 +1176,7 @@ def gen_frames(camera_name):
 
         frame_count += 1
         frame_buffer.append(frame.copy())
-        ret, buffer = cv2.imencode('.jpg', frame)
+        ret, buffer = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 70])
         yield (b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
 
 
