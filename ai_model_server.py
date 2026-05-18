@@ -108,7 +108,7 @@ SCAN_WINDOW_SEC = 4
 SCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE
 
 LOGIC_SKIP = 2 
-YOLO_SKIP = 3 
+YOLO_SKIP = 5 
 
 ALERT_MAX_DURATION = 10.0           
 ROUTINE_COOLDOWN = 20.
@@ -433,16 +433,30 @@ class RTSPVideoStream:
         # Start with a dummy state to allow frontend to request the feed
         self.ret = False
         self.frame = None
-        self.lock = threading.Lock()   # ← ADD THIS LINE
+        self.lock = threading.Lock()
         self.stopped = False
         self.online = True # Assume online if we got this far with a URL
         
+        # --- SUB-STREAM OPTIMIZATION ---
+        if not self.is_youtube:
+            # Hikvision
+            if "/Channels/101" in self.src:
+                self.src = self.src.replace("/Channels/101", "/Channels/102")
+                print(f"[PERF] Hikvision sub-stream enabled for {self.name}")
+            # Dahua
+            elif "subtype=0" in self.src:
+                self.src = self.src.replace("subtype=0", "subtype=1")
+                print(f"[PERF] Dahua sub-stream enabled for {self.name}")
+            # Generic TP-Link / others
+            elif "stream1" in self.src:
+                self.src = self.src.replace("stream1", "stream2")
+                print(f"[PERF] Generic sub-stream enabled for {self.name}")
+
         # Initialize capture
         print(f"[INFO] Initializing stream for {self.name}...")
-        if "/Channels/101" in self.src:
-            self.src = self.src.replace("/Channels/101", "/Channels/102")
-            print(f"[PERF] Auto-switched to sub-stream for {self.name}")
         self.cap = cv2.VideoCapture(self.src, cv2.CAP_FFMPEG)
+        # Set buffer size to 1 to ensure we get the latest frame
+        self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
         
         # --- NEW: Get video FPS to pace the playback ---
         self.fps = self.cap.get(cv2.CAP_PROP_FPS)
@@ -477,26 +491,27 @@ class RTSPVideoStream:
             return self.src
 
     def update(self):
-        frame_count = 0
         error_count = 0
         while not self.stopped:
             if self.cap is not None and self.cap.isOpened():
-                ret, frame = self.cap.read()
+                # "Latest Frame" Method: Empty the buffer aggressively
+                # Grab all available frames, only retrieve the last one.
+                ret = self.cap.grab()
                 if ret:
-                    with self.lock: 
-                        self.ret = True
-                        self.frame = frame
-                        self.online = True
-                    error_count = 0
-                    frame_count += 1
-                    if frame_count % 100 == 0:
-                        print(f"[DEBUG] {self.name}: Received {frame_count} frames.")
+                    # Retrieve the frame we just grabbed
+                    ret, frame = self.cap.retrieve()
+                    if ret:
+                        with self.lock: 
+                            self.ret = True
+                            self.frame = frame
+                            self.online = True
+                        error_count = 0
+                        
+                        if self.recorder:
+                            self.recorder.write(frame)
 
-                    if self.recorder:
-                        self.recorder.write(frame)
-
-                    if self.is_youtube:
-                        time.sleep(self.frame_delay)
+                        if self.is_youtube:
+                            time.sleep(self.frame_delay)
                 else:
                     error_count += 1
                     self.ret = False
@@ -507,12 +522,14 @@ class RTSPVideoStream:
                         time.sleep(2)
                         reconnect_url = self.get_fresh_url() if self.is_youtube else self.src
                         self.cap = cv2.VideoCapture(reconnect_url, cv2.CAP_FFMPEG)
+                        self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
             else:
                 if self.cap: self.cap.release()
                 time.sleep(3)
                 print(f"[INFO] Attempting to connect to {self.name}...")
                 reconnect_url = self.get_fresh_url() if self.is_youtube else self.src
                 self.cap = cv2.VideoCapture(reconnect_url, cv2.CAP_FFMPEG)
+                self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
                 self.online = self.cap.isOpened()
                 if self.online:
                     print(f"✅ Camera {self.name} connected!")
@@ -1013,12 +1030,15 @@ def gen_frames(camera_name):
     real_time_fps = 15.0 
     last_processed_frame = None
     
+    # --- DETECTION CACHING ---
+    cached_results = None
+    
     while True:
         ret, frame = camera.read()
         
         # If stream is lost, create a status frame instead of skipping
         if not ret or frame is None:
-            # Create a black frame (640x480) with status text
+            # ... (unchanged status frame logic)
             status_frame = np.zeros((480, 640, 3), dtype=np.uint8)
             cv2.putText(status_frame, f"Connecting to {camera_name}...", (50, 240), 
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
@@ -1029,20 +1049,19 @@ def gen_frames(camera_name):
             if ret_enc:
                 yield (b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
             
-            time.sleep(1.0) # Wait a bit before trying again
+            time.sleep(1.0)
             continue
             
         if frame is last_processed_frame:
             time.sleep(0.01); continue
         last_processed_frame = frame
         
-        # Calculate dynamic FPS for smooth video writing
+        # ... (unchanged resize and FPS logic)
         new_frame_time = time.time()
         if prev_frame_time > 0:
             real_time_fps = 0.9 * real_time_fps + 0.1 * (1 / (new_frame_time - prev_frame_time))
         prev_frame_time = new_frame_time
 
-        # Resize for AI speed
         orig_h, orig_w = frame.shape[:2]
         target_w = 640
         target_h = int(orig_h * (target_w / orig_w))
@@ -1051,10 +1070,14 @@ def gen_frames(camera_name):
         
         run_yolo = (frame_count % YOLO_SKIP == 0)
         active_ids_this_frame = []
+        
         if run_yolo:
+            # Run YOLO and update cache
             results = yolo_model.track(frame, persist=True, verbose=False, classes=[0], conf=0.45)
+            cached_results = results
         else:
-            results = None
+            # Use cached results for smoothness
+            results = cached_results
 
         if results and results[0].boxes.id is not None:
             boxes = results[0].boxes.xyxy.cpu().numpy()
