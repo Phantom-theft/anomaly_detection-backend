@@ -203,16 +203,16 @@ def add_youtube():
     # DEBUG LOGS FOR PHONE
     print(f"[DEBUG] YouTube Request from: {request.remote_addr}")
     data = request.get_json()
+    if not data: return {"error": "No data received"}, 400
     print(f"[DEBUG] YouTube Data: {data}")
 
-    user_id = data.get("userId")
-    camera_name = data.get("cameraName")
-    youtube_url = data.get("youtubeUrl")
+    user_id = data.get("userId") or data.get("user_id") or data.get("owner")
+    camera_name = data.get("cameraName") or data.get("name")
+    youtube_url = data.get("youtubeUrl") or data.get("youtube_url") or data.get("rtspUrl") or data.get("rtsp_url")
     org_id = data.get("org_id")
- # Get org_id from frontend
-
+    
     if not all([user_id, camera_name, youtube_url]):
-        return {"error": "Missing data"}, 400
+        return {"error": "Missing data: user_id, camera_name, and URL are required"}, 400
 
     # Check runtime duplicates in memory
     if camera_name in cameras_dict:
@@ -272,14 +272,16 @@ def add_camera():
     print(f"[DEBUG] Add Camera request received from: {request.remote_addr}")
     
     data = request.get_json()
+    if not data: return {"error": "No data received"}, 400
     print(f"[DEBUG] Data received: {data}")
-    user_id = data.get("userId")
-    camera_name = data.get("cameraName")
-    rtsp_url = data.get("rtspUrl")
-    org_id = data.get("org_id") # Get org_id from frontend
+
+    user_id = data.get("userId") or data.get("user_id") or data.get("owner")
+    camera_name = data.get("cameraName") or data.get("name")
+    rtsp_url = data.get("rtspUrl") or data.get("rtsp_url")
+    org_id = data.get("org_id")
 
     if not all([user_id, camera_name, rtsp_url]):
-        return {"error": "Missing data"}, 400
+        return {"error": "Missing data: user_id, camera_name, and rtsp_url are required"}, 400
 
     # Check runtime duplicates in memory
     if camera_name in cameras_dict:
@@ -433,6 +435,7 @@ class RTSPVideoStream:
         # Start with a dummy state to allow frontend to request the feed
         self.ret = False
         self.frame = None
+        self.frame_id = 0 # New: Track frame changes
         self.lock = threading.Lock()
         self.stopped = False
         self.online = True # Assume online if we got this far with a URL
@@ -504,6 +507,7 @@ class RTSPVideoStream:
                         with self.lock: 
                             self.ret = True
                             self.frame = frame
+                            self.frame_id += 1 # Update ID
                             self.online = True
                         error_count = 0
                         
@@ -537,8 +541,8 @@ class RTSPVideoStream:
     def read(self):
         with self.lock:
             if self.frame is None:
-                return False, None
-            return self.ret, self.frame.copy()
+                return False, None, 0
+            return self.ret, self.frame.copy(), self.frame_id
 # --- Load cameras from Firestore ---
 
 
@@ -548,10 +552,11 @@ def load_cameras_from_firestore():
 
     for cam_doc in cams:
         data = cam_doc.to_dict()
+        if not data: continue # Skip empty docs
 
         try:
-            camera_name = data.get("name")        
-            rtsp_url = data.get("rtsp_url")
+            camera_name = data.get("name") or data.get("cameraName")
+            rtsp_url = data.get("rtsp_url") or data.get("rtspUrl")
             # Check if this camera was flagged as a YouTube stream when it was added
             is_youtube = data.get("is_youtube", False)
 
@@ -622,15 +627,29 @@ cloudinary.config(
     secure=True
 )
 
-print(">> Loading AI Models on Nitro V 15...")
+print(">> Loading AI Models on Nitro V 15 (GPU Mode)...")
 try:
+    import tensorflow as tf
+    # Configure TensorFlow to use GPU
+    gpus = tf.config.list_physical_devices('GPU')
+    if gpus:
+        try:
+            for gpu in gpus:
+                tf.config.experimental.set_memory_growth(gpu, True)
+            print(f">> [GPU] TensorFlow using: {gpus}")
+        except RuntimeError as e:
+            print(f">> [GPU-ERROR] TensorFlow: {e}")
+
+    lstm_model = load_model(ANOMALY_MODEL_PATH)
+    # Force YOLO to use GPU (device=0)
+    yolo_model = YOLO(YOLO_MODEL).to('cuda') 
+    stealing_model = load_model(STEALING_MODEL_PATH) if os.path.exists(STEALING_MODEL_PATH) else None
+    print(">> [GPU] Models loaded successfully on NVIDIA RTX.")
+except Exception as e:
+    print(f"!! [GPU-FAIL] Falling back to CPU: {e}")
     lstm_model = load_model(ANOMALY_MODEL_PATH)
     yolo_model = YOLO(YOLO_MODEL)
     stealing_model = load_model(STEALING_MODEL_PATH) if os.path.exists(STEALING_MODEL_PATH) else None
-    print(">> Models loaded successfully.")
-except Exception as e:
-    print(f"!! Error: {e}")
-    sys.exit(1)
 
 
 
@@ -1027,23 +1046,19 @@ def gen_frames(camera_name):
     frame_buffer = deque(maxlen=BUFFER_SIZE)
     frame_count = 0
     prev_frame_time = 0
-    real_time_fps = 15.0 
-    last_processed_frame = None
-    
-    # --- DETECTION CACHING ---
-    cached_results = None
+    real_time_fps = 30.0 
+    last_frame_id = -1
     
     while True:
-        ret, frame = camera.read()
+        loop_start = time.time()
+        ret, frame, current_frame_id = camera.read()
         
         # If stream is lost, create a status frame instead of skipping
         if not ret or frame is None:
-            # ... (unchanged status frame logic)
+            # Create a black frame (640x480) with status text
             status_frame = np.zeros((480, 640, 3), dtype=np.uint8)
             cv2.putText(status_frame, f"Connecting to {camera_name}...", (50, 240), 
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
-            cv2.putText(status_frame, "Please wait, the AI is reconnecting", (50, 280), 
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (200, 200, 200), 1)
             
             ret_enc, buffer = cv2.imencode('.jpg', status_frame)
             if ret_enc:
@@ -1052,11 +1067,11 @@ def gen_frames(camera_name):
             time.sleep(1.0)
             continue
             
-        if frame is last_processed_frame:
-            time.sleep(0.01); continue
-        last_processed_frame = frame
+        if current_frame_id == last_frame_id:
+            time.sleep(0.001); continue
+        last_frame_id = current_frame_id
         
-        # ... (unchanged resize and FPS logic)
+        # Calculate dynamic FPS for smooth video writing
         new_frame_time = time.time()
         if prev_frame_time > 0:
             real_time_fps = 0.9 * real_time_fps + 0.1 * (1 / (new_frame_time - prev_frame_time))
@@ -1072,11 +1087,10 @@ def gen_frames(camera_name):
         active_ids_this_frame = []
         
         if run_yolo:
-            # Run YOLO and update cache
+            # Run YOLO on GPU
             results = yolo_model.track(frame, persist=True, verbose=False, classes=[0], conf=0.45)
             cached_results = results
         else:
-            # Use cached results for smoothness
             results = cached_results
 
         if results and results[0].boxes.id is not None:
@@ -1200,17 +1214,29 @@ def gen_frames(camera_name):
         frame_count += 1
         frame_buffer.append(frame.copy())
         ret, buffer = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 70])
+        
+        # --- NITRO PACER: Sync stream with real-time clock ---
+        elapsed = time.time() - loop_start
+        # Fix: Using globally defined FRAME_DELAY instead of missing TARGET_FRAME_TIME
+        sleep_time = max(0.001, FRAME_DELAY - elapsed)
+        time.sleep(sleep_time)
+        
         yield (b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
 
 
 #  FLASK ROUTES
 
 @app.route('/cameras', methods=['GET', 'OPTIONS'])
-@app.route('/getCameras', methods=['GET', 'OPTIONS']) # Alias for compatibility
-def get_cameras():
+@app.route('/getCameras', methods=['GET', 'OPTIONS'])
+@app.route('/camerasorg_id=<path:rest>', methods=['GET', 'OPTIONS']) # Fallback for frontend typo
+def get_cameras(rest=None):
     if request.method == 'OPTIONS': return '', 200
-    # ... rest of your code
-    org_id = request.args.get("org_id", None)
+    
+    # Extract org_id even from malformed URL if needed
+    org_id = request.args.get("org_id")
+    if not org_id and rest:
+        org_id = rest # In case it was /camerasorg_id=XYZ
+    
     cam_list = []
 
     # Kunin lahat ng cameras mula sa Firestore
