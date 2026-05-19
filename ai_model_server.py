@@ -467,6 +467,10 @@ class AIProcessor:
         self.cached_results = None
         self.frame_count = 0
         
+        # --- NEW: AI FPS ESTIMATION ---
+        self.ai_fps = 15.0
+        self.prev_ai_time = 0
+        
         print(f"[AI] Starting AI Processor for {self.camera_name}")
         threading.Thread(target=self.run, daemon=True).start()
 
@@ -589,25 +593,51 @@ class AIProcessor:
                             person['recording_acc'] = acc
                             person['recording_suspects'] = 0 
                             person['post_roll_counter'] = 0
+                            person['recording_start_time'] = time.time()
                             
                             if SSE_AVAILABLE:
                                 emit_detection(self.camera_name, final_label, acc, org_id=self.stream.org_id)
                             save_instant_snapshot(frame_resized.copy(), self.camera_name, self.stream.org_id, final_label, track_id)
                         
                         if person.get('is_recording', False):
-                            person['recording_frames'].append(frame_resized.copy())
                             if len(person['recording_frames']) > 900:
                                 trigger_dynamic_save(person, track_id, self.camera_name, self.stream.org_id, 30.0)
                     
                     elif person.get('is_recording', False):
                         trigger_dynamic_save(person, track_id, self.camera_name, self.stream.org_id, 30.0)
 
-            for t_id, p in list(self.people_states.items()):
-                if p.get('is_recording', False) and t_id not in active_ids_this_frame:
-                    p['recording_frames'].append(frame_resized.copy())
-                    p['post_roll_counter'] += 1
-                    if p['post_roll_counter'] > 120: 
-                        trigger_dynamic_save(p, t_id, self.camera_name, self.stream.org_id, 30.0)
+                annotated_frame = frame_resized.copy()
+                for det in new_detections:
+                    bx1, by1, bx2, by2 = det['box']
+                    color = det['color']
+                    label_text = det['label']
+                    acc_val = det['acc']
+                    t_id = det['track_id']
+                    kpts_draw = det['kpts']
+                    is_val = det['is_validated']
+                    h_frame, w_frame = annotated_frame.shape[:2]
+
+                    # Draw bounding box
+                    thickness = 3 if is_val else 1
+                    cv2.rectangle(annotated_frame, (bx1, by1), (bx2, by2), color, thickness)
+                    cv2.putText(annotated_frame, f"ID {t_id} {label_text} ({acc_val}%)",
+                                (bx1, by1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+                    # Draw 17 keypoints
+                    for i in range(17):
+                        xk = int(kpts_draw[i * 2] * w_frame)
+                        yk = int(kpts_draw[i * 2 + 1] * h_frame)
+                        if xk > 0 and yk > 0:
+                            cv2.circle(annotated_frame, (xk, yk), 3, (0, 255, 0), -1)
+
+                # Now append the annotated frame to each recording person
+                for det in new_detections:
+                    p = self.people_states.get(det['track_id'])
+                    if p and p.get('is_recording'):
+                        p['recording_frames'].append(annotated_frame)
+                        if len(p['recording_frames']) > 900:
+                            trigger_dynamic_save(p, det['track_id'], self.camera_name, self.stream.org_id, 30.0)     
+
 
             self.latest_detections = new_detections
             self.active_suspects = sum(1 for p in self.people_states.values() if "Anomaly" in p.get('current_label', ''))
@@ -1218,17 +1248,25 @@ def trigger_dynamic_save(person, track_id, camera_name, org_id, fps):
     label = person.get('recording_label', 'Anomaly')
     acc = person.get('recording_acc', 0)
     suspects = person.get('recording_suspects', 1)
-    
+
+    # FIX 3: Calculate real FPS from actual elapsed recording time
+    start_time = person.get('recording_start_time', None)
+    if start_time and len(frames) > 1:
+        elapsed = time.time() - start_time
+        real_fps = len(frames) / elapsed if elapsed > 0 else fps
+        real_fps = max(5.0, min(real_fps, 60.0))  # Clamp to sane range
+    else:
+        real_fps = fps
+
     person['is_recording'] = False
     person['recording_frames'] = []
     person['last_save_time'] = time.time()
-    
-    if len(frames) < 15: return
-    
-    print(f"🎬 [FINALIZING CLIP] ID:{track_id} | Type:{label} | Duration:~{len(frames)/fps:.1f}s")
-    threading.Thread(target=save_alert_clip, 
-                      args=(frames, label, track_id, acc, fps, suspects, camera_name, org_id)).start()
 
+    if len(frames) < 15: return
+
+    print(f"🎬 [FINALIZING CLIP] ID:{track_id} | Type:{label} | Duration:~{len(frames)/real_fps:.1f}s | FPS:{real_fps:.1f}")
+    threading.Thread(target=save_alert_clip,
+                      args=(frames, label, track_id, acc, real_fps, suspects, camera_name, org_id)).start()
 def save_instant_snapshot(frame, camera_name, org_id, label, track_id):
     """Saves and uploads a single frame immediately when detection starts."""
     try:
