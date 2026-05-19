@@ -18,7 +18,6 @@ import shutil
 from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import yt_dlp
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -137,7 +136,7 @@ class BehaviorValidator:
     def __init__(self):
         self.alert_counters = {} 
         self.MIN_FRAMES_STEAL = 10
-        self.MIN_FRAMES_SUSP = 5
+        self.MIN_FRAMES_ANOMALY = 5
 
     def get_temporal_validation(self, track_id, current_label):
         if track_id not in self.alert_counters:
@@ -152,7 +151,7 @@ class BehaviorValidator:
 
         if "Stealing" in counter["label"] and counter["count"] >= self.MIN_FRAMES_STEAL:
             return True
-        if ("Suspicious" in counter["label"] or "Loitering" in counter["label"] or "Pacing" in counter["label"]) and counter["count"] >= self.MIN_FRAMES_SUSP:
+        if ("Loitering" in counter["label"] or "Pacing" in counter["label"]) and counter["count"] >= self.MIN_FRAMES_ANOMALY:
             return True
             
         return False
@@ -196,74 +195,6 @@ def add_header(response):
     return response
 
 cameras_dict = {}  # key = camera_name, value = RTSPVideoStream object
-@app.route("/add_youtube", methods=["POST", "OPTIONS"])
-def add_youtube():
-    if request.method == "OPTIONS": return "", 200
-
-    # DEBUG LOGS FOR PHONE
-    print(f"[DEBUG] YouTube Request from: {request.remote_addr}")
-    data = request.get_json()
-    if not data: return {"error": "No data received"}, 400
-    print(f"[DEBUG] YouTube Data: {data}")
-
-    user_id = data.get("userId") or data.get("user_id") or data.get("owner")
-    camera_name = data.get("cameraName") or data.get("name")
-    youtube_url = data.get("youtubeUrl") or data.get("youtube_url") or data.get("rtspUrl") or data.get("rtsp_url")
-    org_id = data.get("org_id")
-    
-    if not all([user_id, camera_name, youtube_url]):
-        return {"error": "Missing data: user_id, camera_name, and URL are required"}, 400
-
-    # Check runtime duplicates in memory
-    if camera_name in cameras_dict:
-        return {"error": "Camera name already exists"}, 400
-
-    # Permanent Firestore check
-    query_name = db.collection("cameras").where("name", "==", camera_name).stream()
-    if any(query_name):
-        return {"error": "Camera name already exists in database"}, 400
-
-    # 1. Extract the raw stream URL using yt-dlp
-    try:
-        print(f"[INFO] Extracting stream URL for: {youtube_url}")
-        # We prefer a lower resolution like 480p or 720p for faster AI processing
-        ydl_opts = {
-            'format': 'best[height<=720][ext=mp4]/best[ext=mp4]/best',
-            'quiet': True,
-            'no_warnings': True,
-            'nocheckcertificate': True
-        } 
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(youtube_url, download=False)
-            raw_stream_url = info['url']
-    except Exception as e:
-        print(f"!! Failed to extract YouTube stream: {e}")
-        return {"error": "Failed to extract stream from this YouTube link. It might be private or age-restricted."}, 500
-
-    # Fallback lookup if frontend didn't send org_id
-    if not org_id or org_id == "default":
-        try:
-            user_doc = db.collection("users").document(user_id).get()
-            if user_doc.exists:
-                org_id = user_doc.to_dict().get("org_id", None)
-        except: pass
-
-    # 2. Add camera to memory using the RAW stream URL
-    cameras_dict[camera_name] = RTSPVideoStream(raw_stream_url, original_url=youtube_url, name=camera_name, is_youtube=True, org_id=org_id)
-
-    # 3. Save to Firestore (We save the original YouTube URL, not the raw one)
-    db.collection("cameras").add({
-        "name":       camera_name,
-        "rtsp_url":   youtube_url,
-        "is_youtube": True,
-        "owner":      user_id,
-        "org_id":     org_id,
-        "created_at": firestore.SERVER_TIMESTAMP
-    })
-
-    print(f"[INFO] YouTube Camera added: {camera_name}")
-    return {"message": f"YouTube stream '{camera_name}' added successfully!"}, 200
-
 @app.route("/addCamera", methods=["POST", "OPTIONS"])
 def add_camera():
     if request.method == "OPTIONS": return "", 200
@@ -651,11 +582,10 @@ class AIProcessor:
         self.stopped = True
 
 class RTSPVideoStream:
-    def __init__(self, src, original_url=None, name=None, is_youtube=False, org_id="default"):
+    def __init__(self, src, original_url=None, name=None, org_id="default"):
         self.src = src
         self.original_url = original_url if original_url else src 
         self.name = name
-        self.is_youtube = is_youtube
         self.org_id = org_id
         
         # Start with a dummy state to allow frontend to request the feed
@@ -667,19 +597,18 @@ class RTSPVideoStream:
         self.online = True # Assume online if we got this far with a URL
         
         # --- SUB-STREAM OPTIMIZATION ---
-        if not self.is_youtube:
-            # Hikvision
-            if "/Channels/101" in self.src:
-                self.src = self.src.replace("/Channels/101", "/Channels/102")
-                print(f"[PERF] Hikvision sub-stream enabled for {self.name}")
-            # Dahua
-            elif "subtype=0" in self.src:
-                self.src = self.src.replace("subtype=0", "subtype=1")
-                print(f"[PERF] Dahua sub-stream enabled for {self.name}")
-            # Generic TP-Link / others
-            elif "stream1" in self.src:
-                self.src = self.src.replace("stream1", "stream2")
-                print(f"[PERF] Generic sub-stream enabled for {self.name}")
+        # Hikvision
+        if "/Channels/101" in self.src:
+            self.src = self.src.replace("/Channels/101", "/Channels/102")
+            print(f"[PERF] Hikvision sub-stream enabled for {self.name}")
+        # Dahua
+        elif "subtype=0" in self.src:
+            self.src = self.src.replace("subtype=0", "subtype=1")
+            print(f"[PERF] Dahua sub-stream enabled for {self.name}")
+        # Generic TP-Link / others
+        elif "stream1" in self.src:
+            self.src = self.src.replace("stream1", "stream2")
+            print(f"[PERF] Generic sub-stream enabled for {self.name}")
 
         # Initialize capture
         print(f"[INFO] Initializing stream for {self.name}...")
@@ -703,25 +632,6 @@ class RTSPVideoStream:
         
         threading.Thread(target=self.update, daemon=True).start()
 
-    def get_fresh_url(self):
-        print(f"[INFO] Refreshing YouTube stream for: {self.name}...")
-        try:
-            import yt_dlp
-            ydl_opts = {
-                'format': 'best[ext=mp4][height<=720]/best[ext=mp4]/best',
-                'quiet': True,
-                'no_warnings': True,
-                'nocheckcertificate': True,
-                'extract_flat': False,
-                'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-            }
-            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                info = ydl.extract_info(self.original_url, download=False)
-                return info.get('url')
-        except Exception as e:
-            print(f"!! Failed to refresh URL for {self.name}: {e}")
-            return self.src
-
     def update(self):
         error_count = 0
         while not self.stopped:
@@ -744,16 +654,12 @@ class RTSPVideoStream:
                         if self.recorder:
                             self.recorder.write(frame)
 
-                if self.is_youtube:
-                    time.sleep(self.frame_delay)
-                else:
-                    time.sleep(0.005)
+                time.sleep(0.005)
             else:
                 if self.cap: self.cap.release()
                 time.sleep(3)
                 print(f"[INFO] Attempting to connect to {self.name}...")
-                reconnect_url = self.get_fresh_url() if self.is_youtube else self.src
-                self.cap = cv2.VideoCapture(reconnect_url, cv2.CAP_FFMPEG)
+                self.cap = cv2.VideoCapture(self.src, cv2.CAP_FFMPEG)
                 self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
                 self.online = self.cap.isOpened()
                 if self.online:
@@ -789,8 +695,6 @@ def load_cameras_from_firestore():
         try:
             camera_name = data.get("name") or data.get("cameraName")
             rtsp_url = data.get("rtsp_url") or data.get("rtspUrl")
-            # Check if this camera was flagged as a YouTube stream when it was added
-            is_youtube = data.get("is_youtube", False)
 
             # FIX: Kung null ang org_id sa Firestore, hanapin sa owner ng camera
             # Dati: data.get("org_id", "default") — agad "default" kahit may owner
@@ -819,28 +723,9 @@ def load_cameras_from_firestore():
                 print("⚠️ Skipping invalid camera document:", data)
                 continue
 
-            if is_youtube:
-                # It's a YouTube link, so we need to extract a FRESH raw stream URL
-                print(f"[INFO] Fetching fresh YouTube stream for: {camera_name}...")
-                try:
-                    ydl_opts = {
-                        'format': 'best[height<=720][ext=mp4]/best[ext=mp4]/best',
-                        'quiet': True,
-                        'no_warnings': True,
-                        'nocheckcertificate': True
-                    } 
-                    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                        info = ydl.extract_info(rtsp_url, download=False)
-                        fresh_stream_url = info['url']
-                        
-                        cameras[camera_name] = RTSPVideoStream(fresh_stream_url, original_url=rtsp_url, name=camera_name, is_youtube=True, org_id=org_id)
-                        print(f"✅ Loaded YouTube camera: {camera_name}")
-                except Exception as e:
-                    print(f"❌ Failed to refresh YouTube camera '{camera_name}'. The video might be offline: {e}")
-            else:
-                # It's a normal RTSP camera, load it directly
-                cameras[camera_name] = RTSPVideoStream(rtsp_url, name=camera_name, org_id=org_id)
-                print(f"✅ Loaded RTSP camera: {camera_name}")
+            # It's a normal RTSP camera, load it directly
+            cameras[camera_name] = RTSPVideoStream(rtsp_url, name=camera_name, org_id=org_id)
+            print(f"✅ Loaded RTSP camera: {camera_name}")
 
         except Exception as e:
             print(f"❌ Failed to load camera: {e}")
@@ -1387,19 +1272,17 @@ def get_cameras(rest=None):
     for name, firestore_data in firestore_cams.items():
         # Get online status from memory if available
         online = False
-        cam_type = "rtsp"
         src = firestore_data.get("rtsp_url", "")
         
         if name in cameras_dict:
             cam = cameras_dict[name]
             online = getattr(cam, 'online', False)
-            cam_type = "youtube" if getattr(cam, 'is_youtube', False) else "rtsp"
             src = getattr(cam, 'original_url', getattr(cam, 'src', src))
         
         cam_list.append({
             "name":   name,
             "online": online,
-            "type":   cam_type,
+            "type":   "rtsp",
             "src":    src,
             "org_id": firestore_data.get("org_id", "default"),
             "owner":  firestore_data.get("owner", "unknown")
