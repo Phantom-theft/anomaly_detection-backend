@@ -302,7 +302,7 @@ class RawRecorder:
             except queue.Empty:
                 continue
             except Exception as e:
-                print(f"❌ [RECORDER-THREAD] Error for {self.camera_name}: {e}")
+                print(f"[RECORDER-THREAD] Error for {self.camera_name}: {e}")
 
     def _write_to_disk(self, frame):
         try:
@@ -344,23 +344,23 @@ class RawRecorder:
                 self.writer = cv2.VideoWriter(filename, fourcc, self.fps, (w, h))
                 
                 if self.writer.isOpened():
-                    print(f"✅ [RECORDER] Started web-compatible recording (.webm): {filename}")
+                    print(f"[RECORDER] Started web-compatible recording (.webm): {filename}")
                 else:
-                    print(f"⚠️ [RECORDER] VP80 codec failed, falling back to mp4v...")
+                    print(f"[RECORDER] VP80 codec failed, falling back to mp4v...")
                     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
                     filename_mp4 = filename.replace('.webm', '.mp4')
                     self.writer = cv2.VideoWriter(filename_mp4, fourcc, self.fps, (w, h))
                     if self.writer.isOpened():
-                        print(f"✅ [RECORDER] Started recording with mp4v: {filename_mp4}")
+                        print(f"[RECORDER] Started recording with mp4v: {filename_mp4}")
                     else:
-                        print(f"❌ [RECORDER] Failed to open VideoWriter for {filename}")
+                        print(f"[RECORDER] Failed to open VideoWriter for {filename}")
                         self.writer = None
 
             if self.writer:
                 self.writer.write(stamped_frame)
                 
         except Exception as e:
-            print(f"❌ [RECORDER] Critical Error writing for {self.camera_name}: {e}")
+            print(f"[RECORDER] Critical Error writing for {self.camera_name}: {e}")
             if self.writer:
                 self.writer.release()
                 self.writer = None
@@ -663,7 +663,7 @@ class RTSPVideoStream:
                 self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
                 self.online = self.cap.isOpened()
                 if self.online:
-                    print(f"✅ Camera {self.name} connected!")
+                    print(f"Camera {self.name} connected!")
 
     def read(self):
         with self.lock:
@@ -720,15 +720,15 @@ def load_cameras_from_firestore():
             print(f"[LOAD] Camera '{camera_name}' → org_id: {org_id}")
 
             if not camera_name or not rtsp_url:
-                print("⚠️ Skipping invalid camera document:", data)
+                print("Skipping invalid camera document:", data)
                 continue
 
             # It's a normal RTSP camera, load it directly
             cameras[camera_name] = RTSPVideoStream(rtsp_url, name=camera_name, org_id=org_id)
-            print(f"✅ Loaded RTSP camera: {camera_name}")
+            print(f"Loaded RTSP camera: {camera_name}")
 
         except Exception as e:
-            print(f"❌ Failed to load camera: {e}")
+            print(f"Failed to load camera: {e}")
 
     return cameras
 
@@ -847,7 +847,7 @@ def send_email_alert(label, cloud_url, camera_name, org_id=None):
             msg = MIMEMultipart()
             msg['From'] = f"Security System <{EMAIL_SENDER}>"
             msg['To'] = email
-            msg['Subject'] = f"🚨 ALERT: {label} Detected!"
+            msg['Subject'] = f"ALERT: {label} Detected!"
             
             body = f"""
             <html>
@@ -1149,7 +1149,7 @@ def trigger_dynamic_save(person, track_id, camera_name, org_id, fps):
 
     if len(frames) < 15: return
 
-    print(f"🎬 [FINALIZING CLIP] ID:{track_id} | Type:{label} | Duration:~{len(frames)/real_fps:.1f}s | FPS:{real_fps:.1f}")
+    print(f"[FINALIZING CLIP] ID:{track_id} | Type:{label} | Duration:~{len(frames)/real_fps:.1f}s | FPS:{real_fps:.1f}")
     threading.Thread(target=save_alert_clip,
                       args=(frames, label, track_id, acc, real_fps, suspects, camera_name, org_id)).start()
 def save_instant_snapshot(frame, camera_name, org_id, label, track_id):
@@ -1164,7 +1164,7 @@ def save_instant_snapshot(frame, camera_name, org_id, label, track_id):
         def upload_task():
             try:
                 res = cloudinary.uploader.upload(fn, folder=f"ai_detections/{camera_name}/snapshots")
-                print(f"📸 [SNAPSHOT READY] {res.get('secure_url')}")
+                print(f"[SNAPSHOT READY] {res.get('secure_url')}")
             except: pass
         threading.Thread(target=upload_task).start()
     except: pass
@@ -1515,7 +1515,7 @@ def enforce_retention_policy(org_id):
                     target_cam_bin = os.path.join(bin_org_path, camera_name)
                     os.makedirs(target_cam_bin, exist_ok=True)
                     target_date_bin = os.path.join(target_cam_bin, date_str)
-                    print(f"🗑️ [ARCHIVE] Moving old recording {date_str} to Recycle Bin...")
+                    print(f"[ARCHIVE] Moving old recording {date_str} to Recycle Bin...")
                     shutil.move(date_path, target_date_bin)
             except ValueError:
                 pass
@@ -1540,7 +1540,7 @@ def get_recorded_cameras():
         cameras.sort()
         return {"cameras": cameras}, 200
     except Exception as e:
-        print(f"❌ [SEARCH] Error listing recorded cameras: {e}")
+        print(f"[SEARCH] Error listing recorded cameras: {e}")
         return {"error": str(e)}, 500
 
 @app.route('/get_recordings', methods=['GET'])
@@ -1628,10 +1628,10 @@ def delete_raw_record():
         # Siguraduhing may folder na sa Recycle Bin bago ilipat
         os.makedirs(dest_folder, exist_ok=True)
         shutil.move(src_file, dest_file)
-        print(f"🗑️ [MANUAL ARCHIVE] Moved {file_name} to Recycle Bin.")
+        print(f"[MANUAL ARCHIVE] Moved {file_name} to Recycle Bin.")
         return {"message": "Video moved to Recycle Bin"}, 200
     except Exception as e:
-        print(f"❌ [ARCHIVE ERROR] {e}")
+        print(f"[ARCHIVE ERROR] {e}")
         return {"error": str(e)}, 500
 @app.route('/restore_raw_record', methods=['POST'])
 def restore_raw_record():
@@ -1661,10 +1661,10 @@ def restore_raw_record():
     try:
         os.makedirs(dest_folder, exist_ok=True)
         shutil.move(src_file, dest_file)
-        print(f"♻️ [RESTORE] Successfully moved {file_name} back to Dashboard.")
+        print(f"[RESTORE] Successfully moved {file_name} back to Dashboard.")
         return {"message": "Video restored successfully"}, 200
     except Exception as e:
-        print(f"❌ [RESTORE ERROR] {e}")
+        print(f"[RESTORE ERROR] {e}")
         return {"error": str(e)}, 500
 
 @app.route('/permanent_delete_raw_record', methods=['POST'])
@@ -1688,10 +1688,10 @@ def permanent_delete_raw_record():
 
     try:
         os.remove(target_file) # TULUYAN NANG BUBURAHIN SA HARD DRIVE
-        print(f"🔥 [HARD DELETE] Permanently deleted {file_name}.")
+        print(f"[HARD DELETE] Permanently deleted {file_name}.")
         return {"message": "Video permanently deleted"}, 200
     except Exception as e:
-        print(f"❌ [HARD DELETE ERROR] {e}")
+        print(f"[HARD DELETE ERROR] {e}")
         return {"error": str(e)}, 500
     
 @app.route('/delete_alert_video', methods=['POST'])
@@ -1724,14 +1724,14 @@ def delete_alert_video():
         result = cloudinary.uploader.destroy(public_id, resource_type="video")
         
         if result.get("result") == "ok":
-            print(f"✅ [CLOUDINARY] Successfully deleted: {public_id}")
+            print(f"[CLOUDINARY] Successfully deleted: {public_id}")
             return {"message": "Video deleted successfully"}, 200
         else:
-            print(f"⚠️ [CLOUDINARY] Deletion response: {result}")
+            print(f"[CLOUDINARY] Deletion response: {result}")
             return {"message": "Cloudinary reported: " + str(result.get("result"))}, 200
 
     except Exception as e:
-        print(f"❌ [CLOUDINARY-ERROR] Failed to delete video: {e}")
+        print(f"[CLOUDINARY-ERROR] Failed to delete video: {e}")
         return {"error": str(e)}, 500
 
 
