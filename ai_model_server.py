@@ -334,6 +334,8 @@ db = firestore.client()
 # VIDEO STREAM CLASS
 
 
+import queue
+
 class RawRecorder:
     def __init__(self, camera_name, storage_path, org_id="default", fps=15.0):
         self.camera_name = camera_name
@@ -342,6 +344,9 @@ class RawRecorder:
         self.fps = fps
         self.writer = None
         self.current_day = None
+        self.queue = queue.Queue(maxsize=150) # Buffer about 5-10 seconds of video
+        self.stopped = False
+        threading.Thread(target=self._process_queue, daemon=True).start()
 
     def _get_filename(self):
         # Creates a filename like: D:/CCTV_Record/org123/Camera1/2026-03-27/09_30_05.webm
@@ -355,9 +360,20 @@ class RawRecorder:
         
         return os.path.join(path, f"{time_str}.webm")
 
-    def write(self, frame):
-        if frame is None: return
-        
+    def _process_queue(self):
+        while not self.stopped:
+            try:
+                # Wait for a frame with a timeout to allow checking self.stopped
+                frame = self.queue.get(timeout=1.0)
+                if frame is None: continue
+                self._write_to_disk(frame)
+                self.queue.task_done()
+            except queue.Empty:
+                continue
+            except Exception as e:
+                print(f"❌ [RECORDER-THREAD] Error for {self.camera_name}: {e}")
+
+    def _write_to_disk(self, frame):
         try:
             # --- ADD TIMESTAMP OVERLAY ---
             h, w = frame.shape[:2]
@@ -418,11 +434,191 @@ class RawRecorder:
                 self.writer.release()
                 self.writer = None
 
+    def write(self, frame):
+        if frame is None or self.stopped: return
+        try:
+            # Add to queue without blocking
+            self.queue.put_nowait(frame.copy())
+        except queue.Full:
+            # If queue is full, we must skip frames to avoid lagging the capture thread
+            pass
+
     def release(self):
+        self.stopped = True
         if self.writer:
             self.writer.release()
             self.writer = None
 
+
+# MAIN LOGIC ENGINE
+
+class AIProcessor:
+    def __init__(self, camera_name, stream_obj):
+        self.camera_name = camera_name
+        self.stream = stream_obj
+        self.stopped = False
+        
+        # Shared State for gen_frames
+        self.latest_detections = [] # List of (box, label, color, track_id, acc)
+        self.active_suspects = 0
+        
+        # Camera-specific state
+        self.people_states = {} # Fix collisions
+        self.cached_results = None
+        self.frame_count = 0
+        
+        print(f"[AI] Starting AI Processor for {self.camera_name}")
+        threading.Thread(target=self.run, daemon=True).start()
+
+    def run(self):
+        while not self.stopped:
+            if self.stream.stopped: break
+            
+            # 1. Grab latest frame from stream
+            ret, frame, frame_id = self.stream.read()
+            if not ret or frame is None:
+                time.sleep(0.01)
+                continue
+            
+            # PACE the AI processing
+            time.sleep(0.05) 
+            
+            orig_h, orig_w = frame.shape[:2]
+            target_w = 640
+            target_h = int(orig_h * (target_w / orig_w))
+            frame_resized = cv2.resize(frame, (target_w, target_h))
+            height, width = frame_resized.shape[:2]
+            
+            # Run YOLO every N iterations of the AI loop
+            run_yolo = (self.frame_count % YOLO_SKIP == 0)
+            
+            if run_yolo:
+                results = yolo_model.track(frame_resized, persist=True, verbose=False, classes=[0], conf=0.45)
+                self.cached_results = results
+            else:
+                results = self.cached_results
+
+            new_detections = []
+            active_ids_this_frame = []
+            
+            if results and results[0].boxes.id is not None:
+                boxes = results[0].boxes.xyxy.cpu().numpy()
+                track_ids = results[0].boxes.id.int().cpu().tolist()
+                keypoints = results[0].keypoints.xyn.cpu().numpy()
+                confidences = results[0].boxes.conf.cpu().numpy()
+                    
+                for box, track_id, kpts, y_conf in zip(boxes, track_ids, keypoints, confidences):
+                    active_ids_this_frame.append(track_id)
+                    kpts_flat = kpts.flatten()
+                    
+                    if track_id not in self.people_states:
+                        self.people_states[track_id] = {
+                            'pose_seq': [], 'loc_hist': deque(maxlen=HISTORY_LEN),
+                            'scan_hist': deque(maxlen=SCAN_LEN), 'stationary_counter': 0,
+                            'current_label': "Normal", 'current_color': (0, 255, 0),
+                            'smoothed_box': box, 'current_acc': 0,
+                            'last_lstm_err': 0.0, 'last_steal_prob': 0.0,
+                            'last_save_time': 0, 'is_recording': False,
+                            'recording_frames': [], 'post_roll_counter': 0,
+                            'alert_frame_count': 0
+                        }
+
+                    person = self.people_states[track_id]
+                    
+                    # Smooth box
+                    person['smoothed_box'] = (0.5 * box) + (0.5 * person['smoothed_box'])
+                    person['pose_seq'].append(kpts_flat)
+                    if len(person['pose_seq']) > 30: person['pose_seq'].pop(0)
+
+                    # Track movement
+                    bx1, by1, bx2, by2 = map(int, person['smoothed_box'])
+                    cx, cy = (bx1 + bx2) // 2, (by1 + by2) // 2
+                    if len(person['loc_hist']) > 0:
+                        lx, ly = person['loc_hist'][-1]
+                        if np.hypot(cx-lx, cy-ly) > 2: person['loc_hist'].append((cx, cy))
+                        person['stationary_counter'] = person['stationary_counter'] + 1 if np.hypot(cx-lx, cy-ly) < DETECTION_DIST_SPEED else 0
+                    else: person['loc_hist'].append((cx, cy))
+
+                    # AI Inference
+                    if len(person['pose_seq']) == 30 and (self.frame_count % LOGIC_SKIP == 0):
+                        inp = np.array([person['pose_seq']])
+                        person['last_lstm_err'] = np.mean(np.abs(lstm_model.predict(inp, verbose=0) - inp))
+                        person['last_steal_prob'] = stealing_model.predict(inp, verbose=0)[0][0] if stealing_model else 0
+                    
+                    raw_label, color, acc = "Normal", (0, 255, 0), int(y_conf * 100)
+                    
+                    if person['stationary_counter'] > STILLNESS_LIMIT:
+                        raw_label, color, acc = "Loitering (Still)", (0, 255, 255), 90
+                    elif person['last_steal_prob'] > STEAL_THRESH and is_hand_in_stashing_zone(kpts_flat, height):
+                        raw_label, color = "Anomaly: Stealing", (128, 0, 128)
+                        acc = min(int(50 + ((person['last_steal_prob'] - STEAL_THRESH) / (1.0 - STEAL_THRESH)) * 49) + 15, 99)
+                    elif len(person['loc_hist']) >= (HISTORY_LEN // 2):
+                        xs, ys = [p[0] for p in person['loc_hist']], [p[1] for p in person['loc_hist']]
+                        total_path = sum(np.hypot(xs[i]-xs[i-1], ys[i]-ys[i-1]) for i in range(1, len(xs)))
+                        if total_path > (height * DETECTION_PACING_MULT) and np.hypot(xs[-1]-xs[0], ys[-1]-ys[0]) < (total_path * 0.5):
+                            raw_label, color, acc = "Anomaly:Pacing", (255, 140, 0), 88
+                        elif (max(xs)-min(xs)) < (width * DETECTION_LOITER_W) and (max(ys)-min(ys)) < (height * DETECTION_LOITER_H):
+                            raw_label, color, acc = "Anomaly:Loitering (Area)", (0, 255, 255), 92
+                    elif check_head_scanning(kpts_flat, person['scan_hist']):
+                        raw_label, color, acc = "Anomaly: Scanning", (255, 165, 0), 85
+
+                    is_validated = validator.get_temporal_validation(track_id, raw_label)
+                    final_label = raw_label if is_validated else "Normal"
+                    
+                    person['current_label'] = final_label
+                    person['current_color'] = color if is_validated else (0, 255, 0)
+                    person['current_acc'] = acc
+                    
+                    new_detections.append({
+                        'box': (bx1, by1, bx2, by2),
+                        'label': final_label,
+                        'color': person['current_color'],
+                        'acc': acc,
+                        'track_id': track_id,
+                        'is_validated': is_validated,
+                        'kpts': kpts_flat
+                    })
+
+                    # DYNAMIC RECORDING
+                    if final_label != "Normal":
+                        cooldown = 60.0 if "Stealing" in final_label else 30.0
+                        if not person.get('is_recording', False) and (time.time() - person.get('last_save_time', 0)) > cooldown:
+                            person['is_recording'] = True
+                            person['recording_frames'] = [] 
+                            person['recording_label'] = final_label
+                            person['recording_acc'] = acc
+                            person['recording_suspects'] = 0 
+                            person['post_roll_counter'] = 0
+                            
+                            if SSE_AVAILABLE:
+                                emit_detection(self.camera_name, final_label, acc, org_id=self.stream.org_id)
+                            save_instant_snapshot(frame_resized.copy(), self.camera_name, self.stream.org_id, final_label, track_id)
+                        
+                        if person.get('is_recording', False):
+                            person['recording_frames'].append(frame_resized.copy())
+                            if len(person['recording_frames']) > 900:
+                                trigger_dynamic_save(person, track_id, self.camera_name, self.stream.org_id, 30.0)
+                    
+                    elif person.get('is_recording', False):
+                        trigger_dynamic_save(person, track_id, self.camera_name, self.stream.org_id, 30.0)
+
+            for t_id, p in list(self.people_states.items()):
+                if p.get('is_recording', False) and t_id not in active_ids_this_frame:
+                    p['recording_frames'].append(frame_resized.copy())
+                    p['post_roll_counter'] += 1
+                    if p['post_roll_counter'] > 120: 
+                        trigger_dynamic_save(p, t_id, self.camera_name, self.stream.org_id, 30.0)
+
+            self.latest_detections = new_detections
+            self.active_suspects = sum(1 for p in self.people_states.values() if "Anomaly" in p.get('current_label', ''))
+            
+            for p in self.people_states.values():
+                if p.get('is_recording'): p['recording_suspects'] = self.active_suspects
+
+            self.frame_count += 1
+
+    def stop(self):
+        self.stopped = True
 
 class RTSPVideoStream:
     def __init__(self, src, original_url=None, name=None, is_youtube=False, org_id="default"):
@@ -472,6 +668,9 @@ class RTSPVideoStream:
         if ENABLE_RAW_RECORDING:
             self.recorder = RawRecorder(self.name, RAW_RECORDING_DIR, org_id=self.org_id, fps=self.fps)
         
+        # AI Processor (started later)
+        self.ai = None
+        
         threading.Thread(target=self.update, daemon=True).start()
 
     def get_fresh_url(self):
@@ -498,35 +697,27 @@ class RTSPVideoStream:
         while not self.stopped:
             if self.cap is not None and self.cap.isOpened():
                 # "Latest Frame" Method: Empty the buffer aggressively
-                # Grab all available frames, only retrieve the last one.
-                ret = self.cap.grab()
-                if ret:
-                    # Retrieve the frame we just grabbed
+                # Grab all pending frames to stay at the HEAD of the stream
+                while True:
+                    grabbed = self.cap.grab()
+                    if not grabbed: break
+                    # Only retrieve the LAST one
                     ret, frame = self.cap.retrieve()
                     if ret:
                         with self.lock: 
                             self.ret = True
                             self.frame = frame
-                            self.frame_id += 1 # Update ID
+                            self.frame_id += 1 
                             self.online = True
                         error_count = 0
                         
                         if self.recorder:
                             self.recorder.write(frame)
 
-                        if self.is_youtube:
-                            time.sleep(self.frame_delay)
+                if self.is_youtube:
+                    time.sleep(self.frame_delay)
                 else:
-                    error_count += 1
-                    self.ret = False
-                    if error_count > 10:
-                        self.online = False
-                        print(f"⚠️ Stream connection lost for {self.name} - retrying...")
-                        self.cap.release()
-                        time.sleep(2)
-                        reconnect_url = self.get_fresh_url() if self.is_youtube else self.src
-                        self.cap = cv2.VideoCapture(reconnect_url, cv2.CAP_FFMPEG)
-                        self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+                    time.sleep(0.005)
             else:
                 if self.cap: self.cap.release()
                 time.sleep(3)
@@ -543,6 +734,17 @@ class RTSPVideoStream:
             if self.frame is None:
                 return False, None, 0
             return self.ret, self.frame.copy(), self.frame_id
+
+    def start_ai(self):
+        if not self.ai:
+            self.ai = AIProcessor(self.name, self)
+
+    def stop(self):
+        self.stopped = True
+        if self.ai: self.ai.stop()
+        if self.recorder: self.recorder.release()
+        if self.cap: self.cap.release()
+
 # --- Load cameras from Firestore ---
 
 
@@ -645,11 +847,19 @@ try:
     yolo_model = YOLO(YOLO_MODEL).to('cuda') 
     stealing_model = load_model(STEALING_MODEL_PATH) if os.path.exists(STEALING_MODEL_PATH) else None
     print(">> [GPU] Models loaded successfully on NVIDIA RTX.")
+    
+    # Start AI threads for already loaded cameras
+    for cam in cameras_dict.values():
+        cam.start_ai()
 except Exception as e:
     print(f"!! [GPU-FAIL] Falling back to CPU: {e}")
     lstm_model = load_model(ANOMALY_MODEL_PATH)
     yolo_model = YOLO(YOLO_MODEL)
     stealing_model = load_model(STEALING_MODEL_PATH) if os.path.exists(STEALING_MODEL_PATH) else None
+    
+    # Start AI threads for already loaded cameras
+    for cam in cameras_dict.values():
+        cam.start_ai()
 
 
 
@@ -1002,9 +1212,6 @@ def is_hand_in_stashing_zone(kpts, h_px):
    
     return min(dist_l, dist_r) < dynamic_thresh
 
-# MAIN LOGIC LOOP
-people_states = {}
-
 # --- HELPER FOR DYNAMIC RECORDING & SNAPSHOTS ---
 def trigger_dynamic_save(person, track_id, camera_name, org_id, fps):
     frames = person.get('recording_frames', [])
@@ -1043,19 +1250,17 @@ def gen_frames(camera_name):
     camera = cameras_dict.get(camera_name)
     if not camera: return
     
-    frame_buffer = deque(maxlen=BUFFER_SIZE)
-    frame_count = 0
-    prev_frame_time = 0
-    real_time_fps = 30.0 
+    # Start AI if not started
+    camera.start_ai()
+    
     last_frame_id = -1
     
     while True:
         loop_start = time.time()
         ret, frame, current_frame_id = camera.read()
         
-        # If stream is lost, create a status frame instead of skipping
+        # If stream is lost, create a status frame
         if not ret or frame is None:
-            # Create a black frame (640x480) with status text
             status_frame = np.zeros((480, 640, 3), dtype=np.uint8)
             cv2.putText(status_frame, f"Connecting to {camera_name}...", (50, 240), 
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
@@ -1067,157 +1272,44 @@ def gen_frames(camera_name):
             time.sleep(1.0)
             continue
             
+        # Don't serve the same frame twice
         if current_frame_id == last_frame_id:
             time.sleep(0.001); continue
         last_frame_id = current_frame_id
         
-        # Calculate dynamic FPS for smooth video writing
-        new_frame_time = time.time()
-        if prev_frame_time > 0:
-            real_time_fps = 0.9 * real_time_fps + 0.1 * (1 / (new_frame_time - prev_frame_time))
-        prev_frame_time = new_frame_time
-
+        # Fast resize for display
         orig_h, orig_w = frame.shape[:2]
         target_w = 640
         target_h = int(orig_h * (target_w / orig_w))
-        frame = cv2.resize(frame, (target_w, target_h))
-        height, width = frame.shape[:2]
+        frame_disp = cv2.resize(frame, (target_w, target_h))
+        height, width = frame_disp.shape[:2]
         
-        run_yolo = (frame_count % YOLO_SKIP == 0)
-        active_ids_this_frame = []
-        
-        if run_yolo:
-            # Run YOLO on GPU
-            results = yolo_model.track(frame, persist=True, verbose=False, classes=[0], conf=0.45)
-            cached_results = results
-        else:
-            results = cached_results
-
-        if results and results[0].boxes.id is not None:
-            boxes = results[0].boxes.xyxy.cpu().numpy()
-            track_ids = results[0].boxes.id.int().cpu().tolist()
-            keypoints = results[0].keypoints.xyn.cpu().numpy()
-            confidences = results[0].boxes.conf.cpu().numpy()
+        # --- DRAW LATEST DETECTIONS (Asynchronous) ---
+        if camera.ai:
+            detections = camera.ai.latest_detections
+            for det in detections:
+                bx1, by1, bx2, by2 = det['box']
+                color = det['color']
+                label = det['label']
+                acc = det['acc']
+                track_id = det['track_id']
+                is_validated = det['is_validated']
+                kpts = det['kpts']
                 
-            for box, track_id, kpts, y_conf in zip(boxes, track_ids, keypoints, confidences):
-                active_ids_this_frame.append(track_id)
-                kpts_flat = kpts.flatten()
-                
-                if track_id not in people_states:
-                    people_states[track_id] = {
-                        'pose_seq': [], 'loc_hist': deque(maxlen=HISTORY_LEN),
-                        'scan_hist': deque(maxlen=SCAN_LEN), 'stationary_counter': 0,
-                        'current_label': "Normal", 'current_color': (0, 255, 0),
-                        'smoothed_box': box, 'current_acc': 0,
-                        'last_lstm_err': 0.0, 'last_steal_prob': 0.0,
-                        'last_save_time': 0, 'is_recording': False,
-                        'recording_frames': [], 'post_roll_counter': 0,
-                        'alert_frame_count': 0
-                    }
-
-                person = people_states[track_id]
-                
-                # Smooth box movement
-                person['smoothed_box'] = (0.5 * box) + (0.5 * person['smoothed_box'])
-                person['pose_seq'].append(kpts_flat)
-                if len(person['pose_seq']) > 30: person['pose_seq'].pop(0)
-
-                # Track movement
-                bx1, by1, bx2, by2 = map(int, person['smoothed_box'])
-                cx, cy = (bx1 + bx2) // 2, (by1 + by2) // 2
-                if len(person['loc_hist']) > 0:
-                    lx, ly = person['loc_hist'][-1]
-                    if np.hypot(cx-lx, cy-ly) > 2: person['loc_hist'].append((cx, cy))
-                    person['stationary_counter'] = person['stationary_counter'] + 1 if np.hypot(cx-lx, cy-ly) < DETECTION_DIST_SPEED else 0
-                else: person['loc_hist'].append((cx, cy))
-
-                # AI Inference (LSTM/Stealing)
-                if len(person['pose_seq']) == 30 and (frame_count % LOGIC_SKIP == 0):
-                    inp = np.array([person['pose_seq']])
-                    person['last_lstm_err'] = np.mean(np.abs(lstm_model.predict(inp, verbose=0) - inp))
-                    person['last_steal_prob'] = stealing_model.predict(inp, verbose=0)[0][0] if stealing_model else 0
-                
-                raw_label, color, acc = "Normal", (0, 255, 0), int(y_conf * 100)
-                
-                # Check Behaviors
-                if person['stationary_counter'] > STILLNESS_LIMIT:
-                    raw_label, color, acc = "Loitering (Still)", (0, 255, 255), 90
-                elif person['last_steal_prob'] > STEAL_THRESH and is_hand_in_stashing_zone(kpts_flat, height):
-                    raw_label, color = "Anomaly: Stealing", (128, 0, 128)
-                    acc = min(int(50 + ((person['last_steal_prob'] - STEAL_THRESH) / (1.0 - STEAL_THRESH)) * 49) + 15, 99)
-                elif len(person['loc_hist']) >= (HISTORY_LEN // 2):
-                    xs, ys = [p[0] for p in person['loc_hist']], [p[1] for p in person['loc_hist']]
-                    total_path = sum(np.hypot(xs[i]-xs[i-1], ys[i]-ys[i-1]) for i in range(1, len(xs)))
-                    if total_path > (height * DETECTION_PACING_MULT) and np.hypot(xs[-1]-xs[0], ys[-1]-ys[0]) < (total_path * 0.5):
-                        raw_label, color, acc = "Anomaly:Pacing", (255, 140, 0), 88
-                    elif (max(xs)-min(xs)) < (width * DETECTION_LOITER_W) and (max(ys)-min(ys)) < (height * DETECTION_LOITER_H):
-                        raw_label, color, acc = "Anomaly:Loitering (Area)", (0, 255, 255), 92
-                elif check_head_scanning(kpts_flat, person['scan_hist']):
-                    raw_label, color, acc = "Anomaly: Scanning", (255, 165, 0), 85
-
-                is_validated = validator.get_temporal_validation(track_id, raw_label)
-                final_label = raw_label if is_validated else "Normal"
-                
-                # Update visual state
-                person['current_label'] = final_label
-                person['current_color'] = color if is_validated else (0, 255, 0)
-                person['current_acc'] = acc
-                active_suspects = sum(1 for p in people_states.values() if "Anomaly" in p.get('current_label', ''))
-
-                # --- ALWAYS DRAW BOXES (Inside Loop) ---
                 thickness = 3 if is_validated else 1
-                cv2.rectangle(frame, (bx1, by1), (bx2, by2), person['current_color'], thickness)
-                cv2.putText(frame, f"ID {track_id} {person['current_label']} ({person['current_acc']}%)", 
-                            (bx1, by1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, person['current_color'], 2)
+                cv2.rectangle(frame_disp, (bx1, by1), (bx2, by2), color, thickness)
+                cv2.putText(frame_disp, f"ID {track_id} {label} ({acc}%)", 
+                            (bx1, by1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
                 
+                # Draw keypoints
                 for i in range(0, 17):
-                    xk, yk = int(kpts_flat[i*2] * width), int(kpts_flat[i*2+1] * height)
-                    if xk > 0 and yk > 0: cv2.circle(frame, (xk, yk), 3, (0, 255, 0), -1)
+                    xk, yk = int(kpts[i*2] * width), int(kpts[i*2+1] * height)
+                    if xk > 0 and yk > 0: cv2.circle(frame_disp, (xk, yk), 3, (0, 255, 0), -1)
 
-                # --- DYNAMIC RECORDING LOGIC ---
-                if final_label != "Normal":
-                    cooldown = 60.0 if "Stealing" in final_label else 30.0
-                    if not person.get('is_recording', False) and (time.time() - person.get('last_save_time', 0)) > cooldown:
-                        # START RECORDING: Start exactly when alert is triggered
-                        person['is_recording'] = True
-                        person['recording_frames'] = [] 
-                        person['recording_label'] = final_label
-                        person['recording_acc'] = acc
-                        person['recording_suspects'] = active_suspects
-                        person['post_roll_counter'] = 0
-                        person['alert_frame_count'] = 0
-                        
-                        # Immediate Alert + Snapshot
-                        if SSE_AVAILABLE:
-                            emit_detection(camera_name, final_label, acc, org_id=camera.org_id)
-                        save_instant_snapshot(frame.copy(), camera_name, camera.org_id, final_label, track_id)
-                    
-                    if person.get('is_recording', False):
-                        person['recording_frames'].append(frame.copy())
-                        person['alert_frame_count'] += 1
-                        
-                        if len(person['recording_frames']) > 900: # Max 30 seconds safety
-                            trigger_dynamic_save(person, track_id, camera_name, camera.org_id, real_time_fps)
-                
-                elif person.get('is_recording', False):
-                    # Anomaly stopped: end exactly now
-                    trigger_dynamic_save(person, track_id, camera_name, camera.org_id, real_time_fps)
-
-        # --- Handle suspects who left the frame while recording ---
-        for t_id, p in list(people_states.items()):
-            if p.get('is_recording', False) and t_id not in active_ids_this_frame:
-                p['recording_frames'].append(frame.copy()) # Add current empty frame
-                p['post_roll_counter'] += 1
-                if p['post_roll_counter'] > 120: 
-                    trigger_dynamic_save(p, t_id, camera_name, camera.org_id, real_time_fps)
-
-        frame_count += 1
-        frame_buffer.append(frame.copy())
-        ret, buffer = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 70])
+        ret, buffer = cv2.imencode('.jpg', frame_disp, [cv2.IMWRITE_JPEG_QUALITY, 70])
         
-        # --- NITRO PACER: Sync stream with real-time clock ---
+        # Sync with TARGET_FPS (approximate)
         elapsed = time.time() - loop_start
-        # Fix: Using globally defined FRAME_DELAY instead of missing TARGET_FRAME_TIME
         sleep_time = max(0.001, FRAME_DELAY - elapsed)
         time.sleep(sleep_time)
         
