@@ -383,6 +383,43 @@ class RawRecorder:
 
 # MAIN LOGIC ENGINE
 
+# --- NEW: PARALLEL KERAS WORKER ---
+import queue
+class KerasWorker:
+    def __init__(self):
+        self.input_queue = queue.Queue(maxsize=10)
+        self.stopped = False
+        print("[KERAS-WORKER] Starting parallel inference thread...")
+        threading.Thread(target=self._worker_loop, daemon=True).start()
+
+    def _worker_loop(self):
+        while not self.stopped:
+            try:
+                # task = (track_id, pose_seq, camera_processor_ref)
+                task = self.input_queue.get(timeout=1.0)
+                if task is None: continue
+                
+                track_id, pose_seq, cam_ref = task
+                inp = np.array([pose_seq])
+                
+                # Run math-heavy inference without blocking YOLO
+                lstm_out = lstm_model.predict(inp, verbose=0)
+                steal_prob = stealing_model.predict(inp, verbose=0)[0][0] if stealing_model else 0.0
+                
+                # Update person state safely
+                if track_id in cam_ref.people_states:
+                    person = cam_ref.people_states[track_id]
+                    person['last_lstm_err'] = np.mean(np.abs(lstm_out - inp))
+                    person['last_steal_prob'] = steal_prob
+                
+                self.input_queue.task_done()
+            except queue.Empty:
+                continue
+            except Exception as e:
+                print(f"[KERAS-WORKER-ERROR] {e}")
+
+keras_worker = KerasWorker()
+
 class AIProcessor:
     def __init__(self, camera_name, stream_obj):
         self.camera_name = camera_name
@@ -474,11 +511,14 @@ class AIProcessor:
                         person['stationary_counter'] = person['stationary_counter'] + 1 if np.hypot(cx-lx, cy-ly) < DETECTION_DIST_SPEED else 0
                     else: person['loc_hist'].append((cx, cy))
 
-                    # AI Inference
+                    # --- PARALLEL INFERENCE TRIGGER ---
+                    # Send to background thread if we have enough frames
                     if len(person['pose_seq']) == 30 and (self.frame_count % LOGIC_SKIP == 0):
-                        inp = np.array([person['pose_seq']])
-                        person['last_lstm_err'] = np.mean(np.abs(lstm_model.predict(inp, verbose=0) - inp))
-                        person['last_steal_prob'] = stealing_model.predict(inp, verbose=0)[0][0] if stealing_model else 0
+                        try:
+                            # Send track_id, the 30-frame sequence, and 'self' so the worker can update this instance
+                            keras_worker.input_queue.put_nowait((track_id, list(person['pose_seq']), self))
+                        except queue.Full:
+                            pass # Skip if background thread is too busy
                     
                     raw_label, color, acc = "Normal", (0, 255, 0), int(y_conf * 100)
                     
