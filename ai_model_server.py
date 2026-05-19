@@ -107,8 +107,8 @@ STILLNESS_LIMIT = 20 * FPS_ESTIMATE
 SCAN_WINDOW_SEC = 4 
 SCAN_LEN = SCAN_WINDOW_SEC * FPS_ESTIMATE
 
-LOGIC_SKIP = 2 
-YOLO_SKIP = 5 
+LOGIC_SKIP = 1 
+YOLO_SKIP = 1 
 
 ALERT_MAX_DURATION = 10.0           
 ROUTINE_COOLDOWN = 20.
@@ -480,8 +480,8 @@ class AIProcessor:
                 time.sleep(0.01)
                 continue
             
-            # PACE the AI processing
-            time.sleep(0.05) 
+            # Run AI as fast as possible for Zero-Lag (No artificial sleep)
+            # time.sleep(0.05) 
             
             orig_h, orig_w = frame.shape[:2]
             target_w = 640
