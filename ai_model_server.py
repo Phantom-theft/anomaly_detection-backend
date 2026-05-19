@@ -136,7 +136,7 @@ DETECTION_LOITER_H    = 0.35
 class BehaviorValidator:
     def __init__(self):
         self.alert_counters = {} 
-        self.MIN_FRAMES_STEAL = 15
+        self.MIN_FRAMES_STEAL = 10
         self.MIN_FRAMES_SUSP = 5
 
     def get_temporal_validation(self, track_id, current_label):
