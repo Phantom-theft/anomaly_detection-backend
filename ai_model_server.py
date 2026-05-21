@@ -523,17 +523,17 @@ class AIProcessor:
                     raw_label, color, acc = "Normal", (0, 255, 0), int(y_conf * 100)
                     
                     if person['stationary_counter'] > STILLNESS_LIMIT:
-                        raw_label, color, acc = "Loitering (Still)", (255, 0, 0), 90
+                        raw_label, color, acc = "Loitering (Still)", (238, 130, 238), 90
                     elif person['last_steal_prob'] > STEAL_THRESH and is_hand_in_stashing_zone(kpts_flat, height):
-                        raw_label, color = "Anomaly: Stealing", (128, 0, 128)
+                        raw_label, color = "Anomaly: Stealing", (0, 0, 255)
                         acc = min(int(50 + ((person['last_steal_prob'] - STEAL_THRESH) / (1.0 - STEAL_THRESH)) * 49) + 15, 99)
                     elif len(person['loc_hist']) >= (HISTORY_LEN // 2):
                         xs, ys = [p[0] for p in person['loc_hist']], [p[1] for p in person['loc_hist']]
                         total_path = sum(np.hypot(xs[i]-xs[i-1], ys[i]-ys[i-1]) for i in range(1, len(xs)))
                         if total_path > (height * DETECTION_PACING_MULT) and np.hypot(xs[-1]-xs[0], ys[-1]-ys[0]) < (total_path * 0.5):
-                            raw_label, color, acc = "Anomaly:Pacing", (0, 255, 255), 88
+                            raw_label, color, acc = "Anomaly:Pacing", (0, 165, 255), 88
                         elif (max(xs)-min(xs)) < (width * DETECTION_LOITER_W) and (max(ys)-min(ys)) < (height * DETECTION_LOITER_H):
-                            raw_label, color, acc = "Anomaly:Loitering (Area)", (0, 255, 255), 92
+                            raw_label, color, acc = "Anomaly:Loitering (Area)", (238, 130, 238), 92
                     elif check_head_scanning(kpts_flat, person['scan_hist']):
                         raw_label, color, acc = "Anomaly: Scanning", (255, 165, 0), 85
 
