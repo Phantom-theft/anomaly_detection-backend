@@ -523,7 +523,7 @@ class AIProcessor:
                     raw_label, color, acc = "Normal", (0, 255, 0), int(y_conf * 100)
                     
                     if person['stationary_counter'] > STILLNESS_LIMIT:
-                        raw_label, color, acc = "Loitering (Still)", (238, 130, 238), 90
+                        raw_label, color, acc = "Loitering (Still)", (155 ,38 ,182), 90
                     elif person['last_steal_prob'] > STEAL_THRESH and is_hand_in_stashing_zone(kpts_flat, height):
                         raw_label, color = "Anomaly: Stealing", (0, 0, 255)
                         acc = min(int(50 + ((person['last_steal_prob'] - STEAL_THRESH) / (1.0 - STEAL_THRESH)) * 49) + 15, 99)
@@ -532,11 +532,8 @@ class AIProcessor:
                         total_path = sum(np.hypot(xs[i]-xs[i-1], ys[i]-ys[i-1]) for i in range(1, len(xs)))
                         if total_path > (height * DETECTION_PACING_MULT) and np.hypot(xs[-1]-xs[0], ys[-1]-ys[0]) < (total_path * 0.5):
                             raw_label, color, acc = "Anomaly:Pacing", (0, 165, 255), 88
-                        elif (max(xs)-min(xs)) < (width * DETECTION_LOITER_W) and (max(ys)-min(ys)) < (height * DETECTION_LOITER_H):
-                            raw_label, color, acc = "Anomaly:Loitering (Area)", (238, 130, 238), 92
-                    elif check_head_scanning(kpts_flat, person['scan_hist']):
-                        raw_label, color, acc = "Anomaly: Scanning", (255, 165, 0), 85
-
+    
+    
                     is_validated = validator.get_temporal_validation(track_id, raw_label)
                     final_label = raw_label if is_validated else "Normal"
                     
@@ -599,7 +596,7 @@ class AIProcessor:
                         xk = int(kpts_draw[i * 2] * w_frame)
                         yk = int(kpts_draw[i * 2 + 1] * h_frame)
                         if xk > 0 and yk > 0:
-                            cv2.circle(annotated_frame, (xk, yk), 3, (0, 255, 0), -1)
+                            cv2.circle(annotated_frame, (xk, yk), 3, color, -1)
 
                 # Now append the annotated frame to each recording person
                 for det in new_detections:
@@ -1267,7 +1264,7 @@ def gen_frames(camera_name):
                 # Draw keypoints
                 for i in range(0, 17):
                     xk, yk = int(kpts[i*2] * width), int(kpts[i*2+1] * height)
-                    if xk > 0 and yk > 0: cv2.circle(frame_disp, (xk, yk), 3, (0, 255, 0), -1)
+                    if xk > 0 and yk > 0: cv2.circle(frame_disp, (xk, yk), 3, color, -1)
 
         ret, buffer = cv2.imencode('.jpg', frame_disp, [cv2.IMWRITE_JPEG_QUALITY, 70])
         
